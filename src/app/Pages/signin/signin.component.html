@@ -19,7 +19,7 @@
         <p class="text-muted mb-4">Enter your email address and password.</p>
 
         <!-- form -->
-        <form action="#">
+        <form (submit)="handleLogin($event)" [formGroup]="userLoginForm">
           <div class="mb-3">
             <label for="emailaddress" class="form-label">Email address</label>
             <input
@@ -28,6 +28,7 @@
               id="emailaddress"
               required=""
               placeholder="Enter your email"
+              formControlName="email"
             />
             <ng-container *ngIf="getEmail.dirty">
               <div
@@ -61,6 +62,7 @@
               required=""
               id="password"
               placeholder="Enter your password"
+              formControlName="password"
             />
             <ng-container *ngIf="getEmail.dirty">
               <div
@@ -76,6 +78,13 @@
                 class="form-text text-danger text-capitalize"
               >
                 Incorrect Password.
+              </div>
+              <div
+                *ngIf="invalid"
+                id="emailHelp"
+                class="form-text text-danger text-capitalize"
+              >
+                Invalid email or password.
               </div>
             </ng-container>
           </div>
@@ -95,9 +104,9 @@
   <!-- Auth fluid right content -->
   <div class="auth-fluid-right text-center">
     <div class="auth-user-testimonial me-5">
-      <h2 class="mb-3">I love the color!</h2>
-      <p>It's a elegent templete. I love it very much.</p>
-      <p>- Hyper Admin User</p>
+      <h2 class="mb-3">HR Managment System</h2>
+      <p>Make your live easy</p>
+      <p>Pioneer Solutions</p>
     </div>
   </div>
   <!-- end Auth fluid right content -->

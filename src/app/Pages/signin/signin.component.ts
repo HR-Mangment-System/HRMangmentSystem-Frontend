@@ -17,6 +17,7 @@ export class SigninComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
   });
+  invalid: boolean = false;
   get getEmail() {
     return this.userLoginForm.controls['email'];
   }
@@ -38,8 +39,9 @@ export class SigninComponent {
           this.router.navigate(['/home']);
         },
         error: (error) => {
-          if (error.status === 401) {
+          if (error.status === 401 || error.status === 404) {
             console.log('Invalid email or password');
+            this.invalid = true;
             this.userLoginForm.controls.password.setErrors({
               invalidLogin: true,
             });

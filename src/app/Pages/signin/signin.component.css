@@ -11049,7 +11049,7 @@ fieldset:disabled .btn {
 
 .text-danger {
   --ct-text-opacity: 1;
-  color: rgba(var(--ct-danger-rgb), var(--ct-text-opacity)) !important;
+  color: rgba(var(--ct-danger-rgb), var(--ct-text-opacity));
 }
 
 .text-light {
@@ -11146,10 +11146,6 @@ fieldset:disabled .btn {
 
 .text-warning-emphasis {
   color: var(--ct-warning-text-emphasis) !important;
-}
-
-.text-danger-emphasis {
-  color: var(--ct-danger-text-emphasis) !important;
 }
 
 .text-light-emphasis {
