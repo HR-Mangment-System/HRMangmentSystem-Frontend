@@ -1,72 +1,104 @@
-<div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5 mt-5 position-relative">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-xxl-4 col-lg-5">
-        <div class="card">
-          <!-- Logo -->
-          <div class="card-header py-4 text-center bg-primary">
-            <a href="index.html">
-              <span
-                ><img src="assets/images/logo.png" alt="logo" height="22"
-              /></span>
-            </a>
-          </div>
+<div class="auth-fluid">
+  <!--Auth fluid left content -->
+  <div class="auth-fluid-form-box">
+    <div class="card-body d-flex flex-column h-100">
+      <!-- Logo -->
+      <div class="auth-brand text-center text-lg-start">
+        <a href="index.html" class="logo-dark">
+          <span
+            ><img
+              src="../../../assets/images/logo.png"
+              alt="dark logo"
+              height="90"
+          /></span>
+        </a>
+      </div>
+      <div class="my-auto">
+        <!-- title-->
+        <h4 class="mt-0">Sign In</h4>
+        <p class="text-muted mb-4">Enter your email address and password.</p>
 
-          <div class="card-body p-4">
-            <div class="text-center w-75 m-auto">
-              <h4 class="text-dark-50 text-center pb-0 fw-bold">Sign In</h4>
-              <p class="text-muted mb-4">
-                Enter your email address and password to access admin panel
-              </p>
-            </div>
-
-            <form action="#">
-              <div class="mb-3">
-                <label for="emailaddress" class="form-label"
-                  >Email address</label
-                >
-                <input
-                  class="form-control"
-                  type="email"
-                  id="emailaddress"
-                  required=""
-                  placeholder="Enter your email"
-                />
-              </div>
-
-              <div class="mb-3">
-                <a href="pages-recoverpw.html" class="text-muted float-end"
-                  ><small>Forgot your password?</small></a
-                >
-                <label for="password" class="form-label">Password</label>
-                <div class="input-group input-group-merge">
-                  <input
-                    type="password"
-                    id="password"
-                    class="form-control"
-                    placeholder="Enter your password"
-                  />
-                </div>
-              </div>
-
-              <div class="mb-3 mb-0 text-center">
-                <button class="btn btn-primary" type="submit">Log In</button>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <div class="row mt-3">
-          <div class="col-12 text-center">
-            <p class="text-muted">
-              Don't have an account?
-              <a href="pages-register.html" class="text-muted ms-1"
-                ><b>Sign Up</b></a
+        <!-- form -->
+        <form action="#">
+          <div class="mb-3">
+            <label for="emailaddress" class="form-label">Email address</label>
+            <input
+              class="form-control"
+              type="email"
+              id="emailaddress"
+              required=""
+              placeholder="Enter your email"
+            />
+            <ng-container *ngIf="getEmail.dirty">
+              <div
+                *ngIf="getEmail.hasError('required')"
+                id="emailHelp"
+                class="form-text text-danger text-capitalize"
               >
-            </p>
+                Email is required.
+              </div>
+              <div
+                *ngIf="getEmail.hasError('email')"
+                id="emailHelp"
+                class="form-text text-danger text-capitalize"
+              >
+                Invalid email format.
+              </div>
+              <div
+                *ngIf="getEmail.hasError('invalidEmail')"
+                id="emailHelp"
+                class="form-text text-danger text-capitalize"
+              >
+                Email Not Found.
+              </div>
+            </ng-container>
           </div>
-        </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              class="form-control"
+              type="password"
+              required=""
+              id="password"
+              placeholder="Enter your password"
+            />
+            <ng-container *ngIf="getEmail.dirty">
+              <div
+                *ngIf="getPassword.hasError('required')"
+                id="emailHelp"
+                class="form-text text-danger text-capitalize"
+              >
+                Password is required.
+              </div>
+              <div
+                *ngIf="getPassword.hasError('invalidPassword')"
+                id="emailHelp"
+                class="form-text text-danger text-capitalize"
+              >
+                Incorrect Password.
+              </div>
+            </ng-container>
+          </div>
+          <div class="d-grid mb-0 text-center">
+            <button class="btn btn-primary" type="submit">
+              <i class="mdi mdi-login"></i> Log In
+            </button>
+          </div>
+        </form>
+        <!-- end form-->
       </div>
     </div>
+    <!-- end .card-body -->
   </div>
+  <!-- end auth-fluid-form-box-->
+
+  <!-- Auth fluid right content -->
+  <div class="auth-fluid-right text-center">
+    <div class="auth-user-testimonial me-5">
+      <h2 class="mb-3">I love the color!</h2>
+      <p>It's a elegent templete. I love it very much.</p>
+      <p>- Hyper Admin User</p>
+    </div>
+  </div>
+  <!-- end Auth fluid right content -->
 </div>
