@@ -14,7 +14,7 @@ import { userToken } from 'src/app/interfaces/userToken';
 export class SigninComponent {
   constructor(public userService: UsersService, public router: Router) {}
   userLoginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', [Validators.required, Validators.minLength(4)]),
     password: new FormControl('', [Validators.required]),
   });
   invalid: boolean = false;

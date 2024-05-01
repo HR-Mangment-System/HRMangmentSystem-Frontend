@@ -24,10 +24,10 @@
             <label for="emailaddress" class="form-label">Email address</label>
             <input
               class="form-control"
-              type="email"
+              type="text"
               id="emailaddress"
               required=""
-              placeholder="Enter your email"
+              placeholder="Enter your email or username"
               formControlName="email"
             />
             <ng-container *ngIf="getEmail.dirty">
@@ -36,14 +36,14 @@
                 id="emailHelp"
                 class="form-text text-danger text-capitalize"
               >
-                Email is required.
+                Email or username is required.
               </div>
               <div
-                *ngIf="getEmail.hasError('email')"
+                *ngIf="getEmail.errors?.['minlength']"
                 id="emailHelp"
                 class="form-text text-danger text-capitalize"
               >
-                Invalid email format.
+                user name must be at least 4 characters
               </div>
               <div
                 *ngIf="getEmail.hasError('invalidEmail')"
@@ -64,7 +64,7 @@
               placeholder="Enter your password"
               formControlName="password"
             />
-            <ng-container *ngIf="getEmail.dirty">
+            <ng-container *ngIf="getPassword.dirty">
               <div
                 *ngIf="getPassword.hasError('required')"
                 id="emailHelp"
