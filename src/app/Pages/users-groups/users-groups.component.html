@@ -1,15 +1,16 @@
 <div class="row">
   <div class="col-12">
     <div class="card">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
               <div class="tab-content">
                   <div class="tab-pane active show" id="buttons-table-preview" role="tabpanel">
                       <div id="datatable-buttons_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
                         <div class="row py-4">
-                          <div class="col-sm-12 col-md-6">
+                          <div class="col-sm-12 col-md-8">
                             <div class="dt-buttons btn-group flex-wrap"> 
                               <div id="datatable-buttons_filter" class="dataTables_filter">
-                                <label>
-                                  <input type="search" class="form-control form-control-sm" placeholder="Add New Group" aria-controls="datatable-buttons">
+                                <label class="d-flex align-items-center">
+                                  <input type="text" class="form-control form-control-sm me-2" placeholder="Add New Group" aria-controls="datatable-buttons" formControlName = "name"> 
                                 </label>
                               </div>
                             </div>
@@ -17,9 +18,9 @@
                         </div>
                         <div class="row">
                           <div class="col-sm-12">
-                          <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline" aria-describedby="datatable-buttons_info" style="width: 1137px;">
-                            <thead>
-                              <tr>
+                            <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline" aria-describedby="datatable-buttons_info" style="width: 1137px;">
+                              <thead>
+                                <tr>
                                   <th tabindex="0" aria-controls="datatable-buttons" rowspan="1" colspan="1" style="width: 40.8px;" aria-label="checkbox: activate to sort column">                                
                                   </th>
                                   <th tabindex="0" aria-controls="datatable-buttons" rowspan="1" colspan="1" style="width: 265.8px;" aria-label="Name: activate to sort column">Name</th>
@@ -27,137 +28,33 @@
                                   <th tabindex="0" aria-controls="datatable-buttons" rowspan="1" colspan="1" style="width: 60.8px;" aria-label="Delete: activate to sort column ascending">Delete</th>
                                   <th tabindex="0" aria-controls="datatable-buttons" rowspan="1" colspan="1" style="width: 60.8px" aria-label="Update: activate to sort column ascending">Update</th>
                                   <th tabindex="0" aria-controls="datatable-buttons" rowspan="1" colspan="1" style="width: 60.8px" aria-label="Show: activate to sort column ascending">Show</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                          <tr class="odd">
-                            <td>
-                              <input type="checkbox" class="form-check-input" id="customCheck2">
-                            </td>
-                          <td class="sorting_1 dtr-control">Angelica Ramos</td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          </tr>
-                          <tr class="even">
-                            <td>
-                              <input type="checkbox" class="form-check-input" id="customCheck2">
-                            </td>
-                          <td class="sorting_1 dtr-control">Angelica Ramos</td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          </tr>
-                          <tr class="odd">
-                            <td>
-                              <input type="checkbox" class="form-check-input" id="customCheck2">
-                            </td>
-                          <td class="sorting_1 dtr-control">Angelica Ramos</td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          </tr>
-                          <tr class="even">
-                            <td>
-                              <input type="checkbox" class="form-check-input" id="customCheck2">
-                            </td>
-                          <td class="sorting_1 dtr-control">Angelica Ramos</td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          </tr>
-                          <tr class="odd">
-                            <td>
-                              <input type="checkbox" class="form-check-input" id="customCheck2">
-                            </td>
-                          <td class="sorting_1 dtr-control">Angelica Ramos</td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          </tr>
-                          <tr class="even">
-                            <td>
-                              <input type="checkbox" class="form-check-input" id="customCheck2">
-                            </td>
-                          <td class="sorting_1 dtr-control">Angelica Ramos</td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          </tr>
-                          <tr class="odd">
-                            <td>
-                              <input type="checkbox" class="form-check-input" id="customCheck2">
-                            </td>
-                          <td class="sorting_1 dtr-control">Angelica Ramos</td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          <td>
-                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                          </td>
-                          </tr>
-                            </tbody>
-                      </table>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr class="odd" *ngFor="let page of pagesName; let i = index">
+                                  <td>
+                                    <input type="checkbox" class="form-check-input"/>
+                                  </td>
+
+                                  <td class="sorting_1 dtr-control"><input formControlName="permissions[{{i}}].name" [id]="'name'+i" [value]="page" >{{page}}</td>
+                                  <td>
+                                    <input type="checkbox" class="form-check-input" formControlName="permissions.{{i}}.create" [id]="'create'+i" value="0"/>
+                                  </td>
+                                  <td>
+                                    <input type="checkbox" class="form-check-input" formControlName="permissions.{{i}}.delete" [id]="'delete'+i" value="0"/>
+                                  </td>
+                                  <td>
+                                    <input type="checkbox" class="form-check-input" formControlName="permissions.{{i}}.update" [id]="'update'+i" value="0"/>
+                                  </td>
+                                  <td>
+                                    <input type="checkbox" class="form-check-input" formControlName="permissions.{{i}}.read" [id]="'read'+i" value="0"/>
+                                  </td>
+                                </tr>
+                              </tbody>
+                              
+                            </table>
+                            
+                            
                     </div>
                   </div>
                   <!-- <div class="row">
@@ -202,9 +99,13 @@
                   </div> -->
           </div>  
           <div class="text-end">
-            <button class="btn btn-primary buttons-print" tabindex="0" aria-controls="datatable-buttons" type="button" fdprocessedid="6sbgg">
+            <button class="btn btn-primary buttons-print" tabindex="0" aria-controls="datatable-buttons" type="submit" fdprocessedid="6sbgg">
               <span>Save</span>
             </button>
           </div>                                        
       </div> 
+              </div>
+    </form>
+    </div>
+  </div>
 </div>
