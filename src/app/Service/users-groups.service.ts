@@ -5,9 +5,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UsersGroupsService {
-  baseUrl: string = 'https://localhost:7109/api/Group/CreateGroup'; 
+  baseUrl: string = 'https://localhost:44337/api/Group/CreateGroup'; 
 
   constructor(private http: HttpClient) { }
 
-  
+  createGroup(group: any) {
+    return this.http.post(this.baseUrl, group);
+  }
 }
