@@ -6,12 +6,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SigninComponent } from './Pages/signin/signin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersGroupsComponent } from './Pages/users-groups/users-groups.component';
+import { EmployeeComponent } from './Pages/employee/employee.component';
 
 @NgModule({
   declarations: [
-    AppComponent, 
-    SigninComponent, 
+    AppComponent,
+    SigninComponent,
     UsersGroupsComponent,
+    EmployeeComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,51 @@
+.container {
+  background-color: #F0DAF0;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+h2 {
+  color: #090909;
+}
+
+form {
+  margin-top: 20px;
+}
+
+.personal-info, .work-related-info {
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: #555;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+input[type="text"], input[type="date"] {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #D94939;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4E2161;
+}
