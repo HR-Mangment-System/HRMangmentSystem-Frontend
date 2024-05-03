@@ -28,15 +28,17 @@ export class SigninComponent {
     data.preventDefault();
     if (this.userLoginForm.valid) {
       const loginUser: LoginUser = {
-        email: this.userLoginForm.controls.email.value || '',
+        UsernameOrEmail: this.userLoginForm.controls.email.value || '',
         password: this.userLoginForm.controls.password.value || '',
       };
+
       this.userService.loginUser(loginUser).subscribe({
         next: (response: any) => {
-          localStorage.setItem('_petsToken', response.token);
-          const decodedToken: userToken = jwtDecode(response.token);
+          localStorage.setItem('UserToken', response.data);
+          const decodedToken: userToken = jwtDecode(response.data);
           this.userService.loggedinUser = decodedToken;
-          this.router.navigate(['/home']);
+          // this.router.navigate(['/home']);
+          console.log(true);
         },
         error: (error) => {
           if (error.status === 401 || error.status === 404) {
