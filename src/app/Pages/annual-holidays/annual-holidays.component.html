@@ -1,0 +1,86 @@
+<div class="container mt-5">
+    <div class="card">
+        <h3 class="card-header text-center py-3">Annual Holidays</h3>
+        <div class="card-body">
+            <form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter name">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="date">Date:</label>
+                            <input type="date" class="form-control" id="date" placeholder="Enter date">
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center py-3"> <!-- Centering the button -->
+                    <button id="save" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+            <div class="table-container" style="max-height: 200px; overflow-y: auto;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Labor Day</td>
+                            <td>2024-05-01</td>
+                            <td>  
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <span class="bi bi-pencil"></span> 
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger mr-1">
+                                    <span class="bi bi-trash"></span> 
+                                </button>
+                            </td>
+                        </tr>
+                    <tr>
+                    <td>Sham El-Nessim</td>
+                    <td>2024-05-06</td>
+                    <td>  
+                    <button class="btn btn-sm btn-outline-primary">
+                        <span class="bi bi-pencil"></span> 
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger mr-1">
+                        <span class="bi bi-trash"></span> 
+                    </button>
+                    </td>
+                </tr>
+                <tr>
+                <td>The July 23 Revolution Day</td>
+                <td>2024-07-23</td>
+                <td>  
+                    <button class="btn btn-sm btn-outline-primary">
+                        <span class="bi bi-pencil"></span> 
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger mr-1">
+                        <span class="bi bi-trash"></span> 
+                    </button>
+                </td>
+                <tr>
+                <td>Armed Forces Dayy</td>
+                <td>2024-10-06</td>
+                <td>  
+                    <button class="btn btn-sm btn-outline-primary">
+                        <span class="bi bi-pencil"></span> 
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger mr-1">
+                        <span class="bi bi-trash"></span> 
+                    </button>
+                </td>
+              </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
