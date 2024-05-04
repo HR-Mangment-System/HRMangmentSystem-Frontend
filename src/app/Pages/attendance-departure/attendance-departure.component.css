@@ -1,0 +1,6 @@
+.print {
+  color: rgb(49, 58, 70);
+}
+.print:hover {
+  cursor: pointer;
+}

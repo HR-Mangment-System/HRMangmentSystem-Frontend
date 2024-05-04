@@ -1,12 +1,20 @@
 <div class="container mt-5">
-  <div class="row">
-    <div class="card">
-      <div class="card-body">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
         <div class="col-sm-12 col-md-6">
           <div class="dt-buttons btn-group flex-wrap">
-            <label class="btn btn-soft-dark buttons-copy buttons-html5" tabindex="0" aria-controls="datatable-buttons">
+            <label
+              class="btn btn-soft-dark buttons-copy buttons-html5"
+              tabindex="0"
+              aria-controls="datatable-buttons"
+            >
               <span>Excel</span>
-              <input type="file" (change)="onFileChange($event)" style="display: none;">
+              <input
+                type="file"
+                (change)="onFileChange($event)"
+                style="display: none"
+              />
             </label>
 
             <button
@@ -54,22 +62,25 @@
               <button type="button" class="btn btn-soft-dark mt-3">Show</button>
             </div>
           </div>
-          <div class="col-4 mt-1">
+          <div class="col-md-4 mt-1">
             <a
-              href="javascript: void(0);"
-              class="action-icon mt-2 d-inline-block ms-2 me-5 float-end"
+              class="action-icon mt-2 d-inline-block ms-2 me-5 float-end print"
             >
-              <i class="font-36 text-dark ri-printer-line"></i
+              <i class="font-36 ri-printer-line"></i
             ></a>
             <a
-              href="javascript: void(0);"
-              class="action-icon mt-2 d-inline-block ms-2 float-end"
+              class="action-icon mt-2 d-inline-block ms-2 float-end print"
+              (click)="SavePDF()"
             >
-              <i class="font-36 text-dark ri-file-ppt-fill"></i
+              <i class="font-36 ri-file-ppt-fill"></i
             ></a>
           </div>
         </div>
-        <table class="table table-striped table-centered mb-0">
+        <table
+          class="table table-striped table-centered mb-0"
+          id="content"
+          #content
+        >
           <thead>
             <tr>
               <th>ID</th>
