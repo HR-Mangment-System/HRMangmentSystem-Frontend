@@ -6,12 +6,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SigninComponent } from './Pages/signin/signin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersGroupsComponent } from './Pages/users-groups/users-groups.component';
+import { UserRegisterComponent } from './Pages/user-register/user-register.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
     SigninComponent, 
-    UsersGroupsComponent,
+    UsersGroupsComponent, UserRegisterComponent,
   ],
   imports: [
     BrowserModule,
