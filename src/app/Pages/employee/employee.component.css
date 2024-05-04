@@ -1,5 +1,5 @@
 .container {
-  background-color: #F0DAF0;
+  background-color: #f0daf0;
   padding: 20px;
   border-radius: 10px;
 }
@@ -12,7 +12,8 @@ form {
   margin-top: 20px;
 }
 
-.personal-info, .work-related-info {
+.personal-info,
+.work-related-info {
   margin-bottom: 20px;
 }
 
@@ -30,7 +31,8 @@ label {
   color: #666;
 }
 
-input[type="text"], input[type="date"] {
+input[type="text"],
+input[type="date"] {
   width: 100%;
   padding: 8px;
   border-radius: 5px;
@@ -39,7 +41,7 @@ input[type="text"], input[type="date"] {
 
 button {
   padding: 10px 20px;
-  background-color: #D94939;
+  background-color: #d94939;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -47,5 +49,5 @@ button {
 }
 
 button:hover {
-  background-color: #4E2161;
+  background-color: #4e2161;
 }

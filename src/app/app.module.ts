@@ -7,6 +7,7 @@ import { SigninComponent } from './Pages/signin/signin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersGroupsComponent } from './Pages/users-groups/users-groups.component';
 import { EmployeeComponent } from './Pages/employee/employee.component';
+import { NavbarComponent } from './Components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { EmployeeComponent } from './Pages/employee/employee.component';
     SigninComponent,
     UsersGroupsComponent,
     EmployeeComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
