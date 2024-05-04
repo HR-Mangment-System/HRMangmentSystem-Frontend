@@ -4,14 +4,11 @@
       <div class="card-body">
         <div class="col-sm-12 col-md-6">
           <div class="dt-buttons btn-group flex-wrap">
-            <button
-              class="btn btn-soft-dark buttons-copy buttons-html5"
-              tabindex="0"
-              aria-controls="datatable-buttons"
-              type="button"
-            >
+            <label class="btn btn-soft-dark buttons-copy buttons-html5" tabindex="0" aria-controls="datatable-buttons">
               <span>Excel</span>
-            </button>
+              <input type="file" (change)="onFileChange($event)" style="display: none;">
+            </label>
+
             <button
               class="btn btn-soft-dark buttons-print"
               tabindex="0"
