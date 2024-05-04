@@ -22955,27 +22955,27 @@ div.dt-button-info h2 {
   background-color: var(--ct-tertiary-bg) !important;
 }
 
-div.dataTables_wrapper div.dataTables_filter {
+.dataTables_filter {
   text-align: right;
 }
 
 @media (max-width: 576px) {
-  div.dataTables_wrapper div.dataTables_filter {
+  .dataTables_filter {
     text-align: center;
   }
 }
 
-div.dataTables_wrapper div.dataTables_filter input {
+.dataTables_filter input {
   margin-left: 0.5em;
   margin-right: 0;
 }
 
-div.dataTables_wrapper div.dataTables_length {
+.dataTables_length {
   text-align: left;
 }
 
 @media (max-width: 576px) {
-  div.dataTables_wrapper div.dataTables_length {
+  .dataTables_length {
     text-align: center;
   }
 }
