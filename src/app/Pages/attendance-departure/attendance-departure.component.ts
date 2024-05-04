@@ -8,6 +8,7 @@ import autoTable from 'jspdf-autotable';
   styleUrls: ['./attendance-departure.component.css'],
 })
 export class AttendanceDepartureComponent {
+  constructor() {}
   @ViewChild('content', { static: false }) content!: ElementRef;
   onFileChange(event: any) {
     const file = event.target.files[0];

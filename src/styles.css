@@ -18218,7 +18218,7 @@ html[data-layout-mode="detached"]:not(
 }
 
 .navbar-custom {
-  background: rgb(49, 58, 70);
+  background: rgb(255, 255, 255);
   -webkit-box-shadow: var(--ct-box-shadow);
   box-shadow: var(--ct-box-shadow);
   min-height: var(--ct-topbar-height);
