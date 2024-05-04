@@ -13,6 +13,6 @@ export class UsersGroupsService {
     return this.http.post(this.baseUrl + 'CreateGroup', group);
   }
   getGroups() {
-    return this.http.get(this.baseUrl + 'GetGroups');
+    return this.http.get(this.baseUrl + 'GetAllGroups');
   }
 }
