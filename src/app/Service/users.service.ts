@@ -8,7 +8,7 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root',
 })
 export class UsersService {
-  baseUrl: string = 'https://localhost:44337/api/Account';
+  baseUrl: string = 'https://localhost:44337/api/Account/';
 
   constructor(public http: HttpClient) {}
 
@@ -25,7 +25,7 @@ export class UsersService {
   };
 
   retreiveTokenData() {
-    let token = localStorage.getItem('_petsToken');
+    let token = localStorage.getItem('UserToken');
     if (token) {
       let userToken: userToken = jwtDecode(token);
       this.loggedinUser.userID = userToken.userID;
@@ -41,7 +41,7 @@ export class UsersService {
   }
 
   logoutUser() {
-    localStorage.removeItem('_petsToken');
+    localStorage.removeItem('UserToken');
     this.loggedinUser = {
       userID: '',
       userEmail: '',

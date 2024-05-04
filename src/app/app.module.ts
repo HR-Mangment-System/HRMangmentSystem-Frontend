@@ -7,12 +7,16 @@ import { SigninComponent } from './Pages/signin/signin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersGroupsComponent } from './Pages/users-groups/users-groups.component';
 import { UserRegisterComponent } from './Pages/user-register/user-register.component';
+import { EmployeeComponent } from './Pages/employee/employee.component';
+import { NavbarComponent } from './Components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent, 
-    SigninComponent, 
+    AppComponent,
+    SigninComponent,
     UsersGroupsComponent, UserRegisterComponent,
+    EmployeeComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

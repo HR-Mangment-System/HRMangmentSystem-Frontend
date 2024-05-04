@@ -1,0 +1,73 @@
+<!-- employee-.component.html -->
+<div class="container">
+  <h2>Employee Data Entry</h2>
+  <form #employeeForm="ngForm" (ngSubmit)="saveEmployee()">
+    <div class="personal-info">
+      <h3>Personal Information</h3>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" [(ngModel)]="employee.personal.name" name="name" required #name="ngModel">
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error-message">
+          <div *ngIf="name.errors?.[required]==true">Name is required.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="text" id="address" [(ngModel)]="employee.personal.address" name="address" required>
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" [(ngModel)]="employee.personal.phoneNumber" name="phoneNumber"
+          required pattern="[0-9]{11}">
+      </div>
+      <div class="form-group">
+        <label for="dateOfBirth">Date of Birth:</label>
+        <input type="date" id="dateOfBirth" [(ngModel)]="employee.personal.dateOfBirth" name="dateOfBirth" required>
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select id="gender" [(ngModel)]="employee.personal.gender" name="gender" required>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="nationalID">National ID:</label>
+        <input type="text" id="nationalID" [(ngModel)]="employee.personal.nationalID" name="nationalID" required
+          pattern="[0-9]{14}">
+      </div>
+      <div class="form-group">
+        <label for="nationality">Nationality:</label>
+        <input type="text" id="nationality" [(ngModel)]="employee.personal.nationality" name="nationality" required>
+      </div>
+    </div>
+    <div class="work-related-info">
+      <h3>Work-Related Information</h3>
+      <div class="form-group">
+        <label for="contractDate">Contract Date:</label>
+        <input type="date" id="contractDate" [(ngModel)]="employee.workRelated.contractDate" name="contractDate"
+          required>
+      </div>
+      <div class="form-group">
+        <label for="salary">Salary:</label>
+        <input type="text" id="salary" [(ngModel)]="employee.workRelated.salary" name="salary" required pattern="[0-9]+">
+      </div>
+      <div class="form-group">
+        <label for="attendanceTime">Attendance Time:</label>
+        <input type="time" id="attendanceTime" [(ngModel)]="employee.workRelated.attendanceTime" name="attendanceTime"
+          required>
+      </div>
+      <div class="form-group">
+        <label for="departureTime">Departure Time:</label>
+        <input type="time" id="departureTime" [(ngModel)]="employee.workRelated.departureTime" name="departureTime"
+          required>
+      </div>
+    </div>
+    <div class="buttons">
+      <button type="submit" [disabled]="employeeForm.invalid">Save</button>
+      <button type="button" (click)="editEmployee()">Edit</button>
+      <button type="button" (click)="deleteEmployee()">Delete</button>
+    </div>
+  </form>
+</div>
