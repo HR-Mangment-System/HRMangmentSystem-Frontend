@@ -85,24 +85,18 @@
                       </div>
 
                       <div class="mb-3">
-                        <label for="authority" class="form-label"
-                          >Authority:</label
-                        >
-                        <select
-                          class="form-select"
-                          id="authority"
-                          name="authority"
-                          formControlName="groupId"
-                          required
-                        >
-                          <option value="">Select Authority</option>
-                          <option value="1">Admin</option>
-                          <option value="user">User</option>
-                        </select>
-                        <div *ngIf="registrationForm.controls['groupId'].invalid && registrationForm.controls['groupId'].touched" class="text-danger">
-                          Authority is required
+                        <label for="groupId" class="form-label">Group</label>
+                        <select formControlName="groupId" class="form-select" aria-label="Default select example">
+    <option value="" disabled>Select Group</option>
+    <option *ngFor="let group of groups" [value]="group.id">{{ group.name }}</option>
+</select>
+
+                        <div *ngIf="registrationForm.get('groupId')?.invalid && registrationForm.get('groupId')?.touched" class="text-danger">
+                            Group selection is required
                         </div>
-                      </div>
+                    </div>
+
+
                       <button type="submit" class="btn btn-primary">
                         Submit
                       </button>
