@@ -11,6 +11,7 @@ import { EmployeeComponent } from './Pages/employee/employee.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { AttendanceDepartureComponent } from './Pages/attendance-departure/attendance-departure.component';
 import { AnnualHolidaysComponent } from './Pages/annual-holidays/annual-holidays.component';
+import { AlertComponent } from './Pop up/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AnnualHolidaysComponent } from './Pages/annual-holidays/annual-holidays
     NavbarComponent,
     AttendanceDepartureComponent,
     AnnualHolidaysComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
