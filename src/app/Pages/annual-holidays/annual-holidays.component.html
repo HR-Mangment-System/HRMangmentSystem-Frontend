@@ -8,7 +8,7 @@
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" class="form-control" id="name" 
-                            placeholder="Enter name" formControlName="holidayName" [(ngModel)]="holidayName">
+                            placeholder="Enter name" formControlName="holidayName" [(ngModel)]="Holiday.holidayName">
                             <ng-container *ngIf="isholidayNameValid.touched">
                                 <div
                                   *ngIf="isholidayNameValid?.hasError('required')"
@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <label for="date">Date:</label>
                             <input type="date" class="form-control" id="date" 
-                            placeholder="Enter date" formControlName="holidayDate" [(ngModel)]="holidayDate">
+                            placeholder="Enter date" formControlName="holidayDate" [(ngModel)]="Holiday.holidayDate">
                             <ng-container *ngIf="isholidayNameValid.touched">
                                 <div
                                   *ngIf="isholidayDateValid?.hasError('required')"
@@ -64,7 +64,7 @@
                             <button class="btn btn-sm btn-outline-primary">
                                 <span class="bi bi-pencil"></span>
                             </button>
-                            <button class="btn btn-sm btn-outline-danger mr-1">
+                            <button class="btn btn-sm btn-outline-danger mr-1" (click)="deleteHoliday(h.holidayId)">
                                 <span class="bi bi-trash"></span>
                             </button>
                             </td>

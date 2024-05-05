@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class HolidayService {
-  baseUrl = 'https://localhost:44337/api/AnnualHolidays'; // API URL 
+  baseUrl = 'https://localhost:7109/api/AnnualHolidays'; // API URL 
   constructor(private http: HttpClient) { }
   
   GetHolidays(){
@@ -21,8 +22,8 @@ export class HolidayService {
     return this.http.put(`${this.baseUrl}/UpdateHoliday/${id}`, {holidayName, holidayDate});
   }
 
-  // Hnadle ID TO URL //
-  deleteHoliday(id: number){
-    return this.http.delete(`${this.baseUrl}/DeleteHoliday/${id}`);
+   // Hnadle ID TO URL //
+  deleteHoliday(holidayId: number){
+    return this.http.delete(`${this.baseUrl}/DeleteHoliday?holidayId=${holidayId}`);
   }
 }

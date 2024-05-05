@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { retry } from 'rxjs';
 import { HolidayService } from 'src/app/Service/annual-holidays.service';
+import { Holiday } from 'src/app/interfaces/Holiday';
 
 
 @Component({
@@ -10,10 +11,13 @@ import { HolidayService } from 'src/app/Service/annual-holidays.service';
   styleUrls: ['./annual-holidays.component.css']
 })
 export class AnnualHolidaysComponent implements OnInit{
-  holidayName: string = '';
-  holidayDate: string = '';
   Holidays: any=[];
   
+  Holiday : Holiday = {
+    holidayName: '',
+    holidayDate: ''
+  };
+
   constructor(private holidayService: HolidayService) { }
   formHoliday = new FormGroup ({
   holidayName : new FormControl ("", [Validators.required,
@@ -49,15 +53,28 @@ export class AnnualHolidaysComponent implements OnInit{
       console.error('Error fetching holidays:', error);
     });
   }
-  
+
 
   // Post
-  createHoliday() {
-    if (this.formHoliday.valid) {
-      this.holidayService.createHoliday(this.holidayName, this.holidayDate).subscribe(res => {
-      console.log(res);
-      });
-      this.formHoliday.reset();
-    }
+  createHoliday(){
+    this.holidayService.createHoliday(this.Holiday.holidayName, this.Holiday.holidayDate).subscribe((res: any) => {
+      this.GetHolidays();
+      console.log('Holiday created:', res);
+    }, error => {
+      console.error('Error creating holiday:', error);
+    });
+    this.formHoliday.reset();
   }
+
+  // delete
+  deleteHoliday(holidayId: number){
+    this.holidayService.deleteHoliday(holidayId).subscribe((res: any) => {
+      this.GetHolidays();
+      console.log('Holiday deleted:', res);
+    }, error => {
+      console.error('Error deleting holiday:', error);
+    });
+  
+  }
+
 }
