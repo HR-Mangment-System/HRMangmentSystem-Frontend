@@ -6,11 +6,23 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HolidayService {
-  baseUrl = 'https://localhost:44337/api/AnnualHolidays/CreateHoliday';
+  baseUrl = 'https://localhost:44337/api/AnnualHolidays'; // API URL 
   constructor(private http: HttpClient) { }
-
-  addHoliday(holidayData: any): Observable<any> {
-    return this.http.post<any>(this.baseUrl, holidayData);
+  
+  GetHolidays(){
+    return this.http.get(`${this.baseUrl}/GetHolidays`);
   }
 
+  createHoliday(holidayName: string , holidayDate:string){
+    return this.http.post(`${this.baseUrl}/CreateHoliday`, {holidayName, holidayDate});
+  }
+
+  updateHoliday(id: number, holidayName: string , holidayDate:string){
+    return this.http.put(`${this.baseUrl}/UpdateHoliday/${id}`, {holidayName, holidayDate});
+  }
+
+  // Hnadle ID TO URL //
+  deleteHoliday(id: number){
+    return this.http.delete(`${this.baseUrl}/DeleteHoliday/${id}`);
+  }
 }
