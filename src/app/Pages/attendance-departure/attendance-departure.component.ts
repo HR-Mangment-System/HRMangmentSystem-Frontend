@@ -1,4 +1,5 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { AttendanceService } from './../../Service/attendance.service';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
@@ -7,8 +8,16 @@ import autoTable from 'jspdf-autotable';
   templateUrl: './attendance-departure.component.html',
   styleUrls: ['./attendance-departure.component.css'],
 })
-export class AttendanceDepartureComponent {
-  constructor() {}
+export class AttendanceDepartureComponent implements OnInit {
+  data: any;
+
+  constructor(public AttendanceService: AttendanceService) {}
+  ngOnInit(): void {
+    this.AttendanceService.getallAttendance().subscribe((data) => {
+      this.data = data;
+    });
+  }
+
   @ViewChild('content', { static: false }) content!: ElementRef;
   onFileChange(event: any) {
     const file = event.target.files[0];
