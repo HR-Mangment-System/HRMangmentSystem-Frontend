@@ -3,6 +3,8 @@ import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import { AlertComponent } from 'src/app/Pop up/alert/alert.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-attendance-departure',
   templateUrl: './attendance-departure.component.html',
@@ -11,7 +13,10 @@ import autoTable from 'jspdf-autotable';
 export class AttendanceDepartureComponent implements OnInit {
   data: any;
 
-  constructor(public AttendanceService: AttendanceService) {}
+  constructor(
+    public dialogRef: MatDialog,
+    public AttendanceService: AttendanceService
+  ) {}
   ngOnInit(): void {
     this.AttendanceService.getallAttendance().subscribe((data) => {
       this.data = data;
@@ -61,5 +66,10 @@ export class AttendanceDepartureComponent implements OnInit {
     const doc = new jsPDF();
     autoTable(doc, { html: table });
     doc.save('table.pdf');
+  }
+  delete(id: number) {
+    this.dialogRef.open(AlertComponent, {
+      data: { id: id },
+    });
   }
 }

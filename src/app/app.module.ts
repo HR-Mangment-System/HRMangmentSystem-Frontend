@@ -12,6 +12,7 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { AttendanceDepartureComponent } from './Pages/attendance-departure/attendance-departure.component';
 import { AnnualHolidaysComponent } from './Pages/annual-holidays/annual-holidays.component';
 import { AlertComponent } from './Pop up/alert/alert.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AlertComponent } from './Pop up/alert/alert.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -10,4 +10,7 @@ export class AttendanceService {
   getallAttendance() {
     return this.http.get(this.baseUrl + '/GetAttendanceReport');
   }
+  deleteAttendance(id: number) {
+    return this.http.delete(`${this.baseUrl}/DeleteAttendanceReport?id=${id}`);
+  }
 }
