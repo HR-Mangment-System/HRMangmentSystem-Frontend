@@ -10,6 +10,9 @@ import { UserRegisterComponent } from './Pages/user-register/user-register.compo
 import { EmployeeComponent } from './Pages/employee/employee.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { AttendanceDepartureComponent } from './Pages/attendance-departure/attendance-departure.component';
+import { AnnualHolidaysComponent } from './Pages/annual-holidays/annual-holidays.component';
+import { AlertComponent } from './Pop up/alert/alert.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmployeeSalaryComponent } from './employee-salary/employee-salary.component';
 
 @NgModule({
@@ -20,6 +23,8 @@ import { EmployeeSalaryComponent } from './employee-salary/employee-salary.compo
     EmployeeComponent,
     NavbarComponent,
     AttendanceDepartureComponent,
+    AnnualHolidaysComponent,
+    AlertComponent,
     EmployeeSalaryComponent,
   ],
   imports: [
@@ -28,6 +33,7 @@ import { EmployeeSalaryComponent } from './employee-salary/employee-salary.compo
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

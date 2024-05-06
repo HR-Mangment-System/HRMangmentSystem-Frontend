@@ -6,6 +6,7 @@ import { UserRegisterComponent } from './Pages/user-register/user-register.compo
 import { EmployeeComponent } from './Pages/employee/employee.component';
 import { AttendanceDepartureComponent } from './Pages/attendance-departure/attendance-departure.component';
 import { EmployeeSalaryComponent } from './employee-salary/employee-salary.component';
+import { AnnualHolidaysComponent } from './Pages/annual-holidays/annual-holidays.component';
 
 const routes: Routes = [
   { path: '', component: SigninComponent },
@@ -14,6 +15,9 @@ const routes: Routes = [
   {path: 'employee',component: EmployeeComponent},
   {path: 'attendance-departure',component: AttendanceDepartureComponent},
   {path: 'employee-salary',component: EmployeeSalaryComponent}
+  {path: 'attendance-departure',component: AttendanceDepartureComponent},
+  {path: 'annual-holidays',component: AnnualHolidaysComponent},
+
 ];
 
 @NgModule({

@@ -18218,7 +18218,7 @@ html[data-layout-mode="detached"]:not(
 }
 
 .navbar-custom {
-  background: rgb(49, 58, 70);
+  background: rgb(255, 255, 255);
   -webkit-box-shadow: var(--ct-box-shadow);
   box-shadow: var(--ct-box-shadow);
   min-height: var(--ct-topbar-height);
@@ -24782,3 +24782,6 @@ span.flatpickr-weekday {
 }
 
 /*# sourceMappingURL=app-creative.min.css.map */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

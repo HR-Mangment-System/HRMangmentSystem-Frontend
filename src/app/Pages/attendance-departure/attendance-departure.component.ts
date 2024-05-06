@@ -1,14 +1,29 @@
-import { Component } from '@angular/core';
+import { AttendanceService } from './../../Service/attendance.service';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
-
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+import { AlertComponent } from 'src/app/Pop up/alert/alert.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-attendance-departure',
   templateUrl: './attendance-departure.component.html',
   styleUrls: ['./attendance-departure.component.css'],
 })
-export class AttendanceDepartureComponent {
-  constructor() { }
+export class AttendanceDepartureComponent implements OnInit {
+  data: any;
 
+  constructor(
+    public dialogRef: MatDialog,
+    public AttendanceService: AttendanceService
+  ) {}
+  ngOnInit(): void {
+    this.AttendanceService.getallAttendance().subscribe((data) => {
+      this.data = data;
+    });
+  }
+
+  @ViewChild('content', { static: false }) content!: ElementRef;
   onFileChange(event: any) {
     const file = event.target.files[0];
     const reader: FileReader = new FileReader();
@@ -20,15 +35,15 @@ export class AttendanceDepartureComponent {
       const firstSheetName: string = workbook.SheetNames[0];
       const worksheet: XLSX.WorkSheet = workbook.Sheets[firstSheetName];
 
-      const jsonData: any[] = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+      const jsonData: any[] = XLSX.utils.sheet_to_json(worksheet, {
+        header: 1,
+      });
 
-      // Extract column headers from the first row
       const headers = jsonData[0];
 
-      // Convert the rest of the rows into objects with keys from column headers
-      const formattedData = jsonData.slice(1).map(row => {
+      const formattedData = jsonData.slice(1).map((row) => {
         const formattedRow: any = {};
-        headers.forEach((header:any, index:any) => {
+        headers.forEach((header: any, index: any) => {
           formattedRow[header] = row[index];
         });
         return formattedRow;
@@ -38,5 +53,23 @@ export class AttendanceDepartureComponent {
     };
 
     reader.readAsArrayBuffer(file);
+  }
+
+  SavePDF(): void {
+    const table = this.content.nativeElement;
+    table
+      .querySelectorAll(`th:nth-child(${7}), td:nth-child(${7})`)
+      .forEach((cell: HTMLElement) => {
+        cell.style.display = 'none';
+      });
+
+    const doc = new jsPDF();
+    autoTable(doc, { html: table });
+    doc.save('table.pdf');
+  }
+  delete(id: number) {
+    this.dialogRef.open(AlertComponent, {
+      data: { id: id },
+    });
   }
 }
