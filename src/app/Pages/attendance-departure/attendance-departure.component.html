@@ -93,7 +93,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngFor="let data of attendancereport.data">
               <td class="table-user">{{ data.id }}</td>
               <td>{{ data.departmentName }}</td>
               <td>{{ data.employeeName }}</td>
@@ -101,10 +101,15 @@
               <td>{{ data.departureTime }}</td>
               <td>{{ data.attendanceDate }}</td>
               <td class="table-action">
-                <a href="javascript: void(0);" class="action-icon">
+                <a (click)="edit(data)" class="action-icon">
                   <i class="mdi mdi-pencil"></i
                 ></a>
-                <a href="javascript: void(0);" class="action-icon">
+                <a
+                  (click)="delete(data.id)"
+                  class="action-icon"
+                  data-bs-toggle="modal"
+                  data-bs-target="#centermodal"
+                >
                   <i class="mdi mdi-delete"></i
                 ></a>
               </td>

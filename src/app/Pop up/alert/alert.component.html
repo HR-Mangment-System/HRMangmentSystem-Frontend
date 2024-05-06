@@ -1,14 +1,7 @@
-<div
-  class="modal fade"
-  id="centermodal"
-  tabindex="-1"
-  role="dialog"
-  aria-hidden="true"
->
+<div class="modal fade" id="centermodal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="myCenterModalLabel">Center modal</h4>
         <button
           type="button"
           class="btn-close"
@@ -17,16 +10,27 @@
         ></button>
       </div>
       <div class="modal-body">
-        <h5 class="mt-0">Text in a modal</h5>
-        <p class="mb-0">
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        </p>
+        <h5 class="mt-0 font-24">
+          Are you Sure you want to {{ data.alerttype }} this data?
+        </h5>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-light" data-bs-dismiss="modal">
-          Close
+        <button
+          type="button"
+          class="btn btn-light"
+          data-bs-dismiss="modal"
+          [mat-dialog-close]
+        >
+          Cancel
         </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="confirm()"
+          [mat-dialog-close]
+        >
+          Confirm
+        </button>
       </div>
     </div>
   </div>

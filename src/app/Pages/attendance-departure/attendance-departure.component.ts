@@ -5,13 +5,14 @@ import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { AlertComponent } from 'src/app/Pop up/alert/alert.component';
 import { MatDialog } from '@angular/material/dialog';
+import { UpdateAttendenceComponent } from 'src/app/Pop up/update-attendence/update-attendence.component';
 @Component({
   selector: 'app-attendance-departure',
   templateUrl: './attendance-departure.component.html',
   styleUrls: ['./attendance-departure.component.css'],
 })
 export class AttendanceDepartureComponent implements OnInit {
-  data: any;
+  attendancereport: any;
 
   constructor(
     public dialogRef: MatDialog,
@@ -19,7 +20,8 @@ export class AttendanceDepartureComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.AttendanceService.getallAttendance().subscribe((data) => {
-      this.data = data;
+      this.attendancereport = data;
+      console.log(this.attendancereport.data);
     });
   }
 
@@ -69,7 +71,12 @@ export class AttendanceDepartureComponent implements OnInit {
   }
   delete(id: number) {
     this.dialogRef.open(AlertComponent, {
-      data: { id: id },
+      data: { id: id, alerttype: 'delete' },
+    });
+  }
+  edit(data: any) {
+    this.dialogRef.open(UpdateAttendenceComponent, {
+      data: { report: data },
     });
   }
 }

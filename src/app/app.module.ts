@@ -13,17 +13,21 @@ import { AttendanceDepartureComponent } from './Pages/attendance-departure/atten
 import { AnnualHolidaysComponent } from './Pages/annual-holidays/annual-holidays.component';
 import { AlertComponent } from './Pop up/alert/alert.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UpdateAttendenceComponent } from './Pop up/update-attendence/update-attendence.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
-    UsersGroupsComponent, UserRegisterComponent,
+    UsersGroupsComponent,
+    UserRegisterComponent,
     EmployeeComponent,
     NavbarComponent,
     AttendanceDepartureComponent,
     AnnualHolidaysComponent,
     AlertComponent,
+    UpdateAttendenceComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +36,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
