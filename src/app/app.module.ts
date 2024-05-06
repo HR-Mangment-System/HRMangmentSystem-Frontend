@@ -15,7 +15,7 @@ import { AlertComponent } from './Pop up/alert/alert.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UpdateAttendenceComponent } from './Pop up/update-attendence/update-attendence.component';
-
+import { EmployeeSalaryComponent } from './employee-salary/employee-salary.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +27,6 @@ import { UpdateAttendenceComponent } from './Pop up/update-attendence/update-att
     AttendanceDepartureComponent,
     AnnualHolidaysComponent,
     AlertComponent,
-    UpdateAttendenceComponent,
   ],
   imports: [
     BrowserModule,
