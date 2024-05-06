@@ -10,6 +10,7 @@ import { UserRegisterComponent } from './Pages/user-register/user-register.compo
 import { EmployeeComponent } from './Pages/employee/employee.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { AttendanceDepartureComponent } from './Pages/attendance-departure/attendance-departure.component';
+import { EmployeeSalaryComponent } from './employee-salary/employee-salary.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AttendanceDepartureComponent } from './Pages/attendance-departure/atten
     EmployeeComponent,
     NavbarComponent,
     AttendanceDepartureComponent,
+    EmployeeSalaryComponent,
   ],
   imports: [
     BrowserModule,

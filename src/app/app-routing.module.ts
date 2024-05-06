@@ -5,13 +5,15 @@ import { UsersGroupsComponent } from './Pages/users-groups/users-groups.componen
 import { UserRegisterComponent } from './Pages/user-register/user-register.component';
 import { EmployeeComponent } from './Pages/employee/employee.component';
 import { AttendanceDepartureComponent } from './Pages/attendance-departure/attendance-departure.component';
+import { EmployeeSalaryComponent } from './employee-salary/employee-salary.component';
 
 const routes: Routes = [
   { path: '', component: SigninComponent },
   {path: 'users-groups',component: UsersGroupsComponent},
   {path: 'user-register',component: UserRegisterComponent},
   {path: 'employee',component: EmployeeComponent},
-  {path: 'attendance-departure',component: AttendanceDepartureComponent}
+  {path: 'attendance-departure',component: AttendanceDepartureComponent},
+  {path: 'employee-salary',component: EmployeeSalaryComponent}
 ];
 
 @NgModule({
