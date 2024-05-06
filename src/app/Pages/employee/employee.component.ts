@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-employee',
@@ -23,14 +24,58 @@ export class EmployeeComponent {
       departureTime: ''
     }
   };
-required: any;
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   saveEmployee(): void {
     if (this.validateForm()) {
-      // Send employee data to the server
-      console.log('Employee data saved:', this.employee);
+      this.http.post('https://localhost:44337/api/Employees/AddEmployee', this.employee)
+        .subscribe(
+          (response) => {
+            console.log('Employee data saved:', response);
+            // Reset form after successful save
+            this.resetForm();
+          },
+          (error) => {
+            console.error('Error saving employee:', error);
+          }
+        );
+    }
+  }
+
+  editEmployee(): void {
+    if (this.employee.personal.nationalID) {
+      this.http.get(`https://localhost:44337/api/Employees/GetEmployeeByNationalId?NationalId=${this.employee.personal.nationalID}`)
+        .subscribe(
+          (response) => {
+            console.log('Employee data retrieved by national ID:', response);
+            // Populate form fields with retrieved data for editing
+            this.employee = response;
+          },
+          (error) => {
+            console.error('Error retrieving employee by national ID:', error);
+          }
+        );
+    } else {
+      console.error('National ID is required to search for an employee.');
+    }
+  }
+
+  deleteEmployee(): void {
+    if (this.employee.personal.nationalID) {
+      this.http.delete(`https://localhost:44337/api/Employees/DeleteEmployee?NationalId=${this.employee.personal.nationalID}`)
+        .subscribe(
+          (response) => {
+            console.log('Employee deleted successfully:', response);
+            // Reset form after successful deletion
+            this.resetForm();
+          },
+          (error) => {
+            console.error('Error deleting employee:', error);
+          }
+        );
+    } else {
+      console.error('National ID is required to delete an employee.');
     }
   }
 
@@ -81,13 +126,23 @@ required: any;
     return nationalID.length >= 14;
   }
 
-  editEmployee(): void {
-    // Add edit logic here
-    console.log('Edit employee');
-  }
-
-  deleteEmployee(): void {
-    // Add delete logic here
-    console.log('Delete employee');
+  resetForm(): void {
+    this.employee = {
+      personal: {
+        name: '',
+        address: '',
+        phoneNumber: '',
+        dateOfBirth: '',
+        gender: '',
+        nationalID: '',
+        nationality: ''
+      },
+      workRelated: {
+        contractDate: '',
+        salary: '',
+        attendanceTime: '',
+        departureTime: ''
+      }
+    };
   }
 }

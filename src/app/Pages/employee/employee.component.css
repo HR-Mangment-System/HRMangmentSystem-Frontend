@@ -1,15 +1,55 @@
 .container {
-  background-color: #f0daf0;
+  background-color: #eae8e494;
   padding: 20px;
   border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-h2 {
-  color: #090909;
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-form {
-  margin-top: 20px;
+.btn-primary {
+  background-color: #4e2161;
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #5e2a74;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.form-control {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.error-message {
+  color: #dc3545;
 }
 
 .personal-info,
@@ -18,36 +58,5 @@ form {
 }
 
 h3 {
-  color: #555;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  color: #666;
-}
-
-input[type="text"],
-input[type="date"] {
-  width: 100%;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #d94939;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #4e2161;
+  color: #333;
 }
