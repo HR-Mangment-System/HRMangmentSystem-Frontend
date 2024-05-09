@@ -4,3 +4,9 @@
 .print:hover {
   cursor: pointer;
 }
+.snack {
+  background-color: red !important;
+  color: white;
+  margin-top: 50px;
+  z-index: 99999999999999;
+}

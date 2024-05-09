@@ -8,7 +8,7 @@
   <div class="modal-dialog w-100">
     <div class="modal-content">
       <div class="modal-body">
-        <form >
+        <form [formGroup]="timeForm" (ngSubmit)="confirm()">
           <div class="mb-3">
             <label for="arrivalTime" class="form-label">arrival Time</label>
             <input
@@ -19,7 +19,7 @@
               formControlName="startTime"
             />
             <div *ngIf="timeForm.get('startTime')?.errors?.['required']">
-              Start time is required
+              arrival time is required
             </div>
           </div>
 
@@ -34,10 +34,10 @@
             />
 
             <div *ngIf="timeForm.get('endTime')?.errors?.['required']">
-              End time is required
+              departure time is required
             </div>
             <div *ngIf="timeForm.errors?.['timeOrder']">
-              End time must be after start time
+              departure time must be after start time
             </div>
           </div>
 
@@ -54,8 +54,5 @@
         </form>
       </div>
     </div>
-    <!-- /.modal-content -->
   </div>
-  <!-- /.modal-dialog -->
 </div>
-<!-- /.modal -->

@@ -6,6 +6,11 @@ import autoTable from 'jspdf-autotable';
 import { AlertComponent } from 'src/app/Pop up/alert/alert.component';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateAttendenceComponent } from 'src/app/Pop up/update-attendence/update-attendence.component';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 @Component({
   selector: 'app-attendance-departure',
   templateUrl: './attendance-departure.component.html',
@@ -13,15 +18,15 @@ import { UpdateAttendenceComponent } from 'src/app/Pop up/update-attendence/upda
 })
 export class AttendanceDepartureComponent implements OnInit {
   attendancereport: any;
-
   constructor(
+    private _snackBar: MatSnackBar,
     public dialogRef: MatDialog,
     public AttendanceService: AttendanceService
   ) {}
   ngOnInit(): void {
     this.AttendanceService.getallAttendance().subscribe((data) => {
       this.attendancereport = data;
-      console.log(this.attendancereport.data);
+      console.log(this.attendancereport);
     });
   }
 
