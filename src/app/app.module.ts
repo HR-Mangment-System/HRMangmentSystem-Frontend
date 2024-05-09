@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UpdateAttendenceComponent } from './Pop up/update-attendence/update-attendence.component';
 import { EmployeeSalaryComponent } from './employee-salary/employee-salary.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,8 @@ import { EmployeeSalaryComponent } from './employee-salary/employee-salary.compo
     AttendanceDepartureComponent,
     AnnualHolidaysComponent,
     AlertComponent,
+    UpdateAttendenceComponent,
+    EmployeeSalaryComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +39,7 @@ import { EmployeeSalaryComponent } from './employee-salary/employee-salary.compo
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
