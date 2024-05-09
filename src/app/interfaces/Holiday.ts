@@ -1,5 +1,5 @@
 export interface Holiday {
-  holidayId?: number;
+  id?: number;
   holidayName: string;
   holidayDate: string;
 }

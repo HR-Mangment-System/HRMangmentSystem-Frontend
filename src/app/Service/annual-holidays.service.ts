@@ -1,3 +1,4 @@
+import { Holiday } from './../interfaces/Holiday';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -17,13 +18,12 @@ export class HolidayService {
   createHoliday(holidayName: string , holidayDate:string){
     return this.http.post(`${this.baseUrl}/CreateHoliday`, {holidayName, holidayDate});
   }
-
-  updateHoliday(id: number, holidayName: string , holidayDate:string){
-    return this.http.put(`${this.baseUrl}/UpdateHoliday/${id}`, {holidayName, holidayDate});
-  }
-
-   // Hnadle ID TO URL //
   deleteHoliday(holidayId: number){
     return this.http.delete(`${this.baseUrl}/DeleteHoliday?holidayId=${holidayId}`);
+  }
+
+  updateHoliday(holiday: Holiday): Observable<Holiday> {
+    const updateUrl = `${this.baseUrl}/EditHoliday/${holiday.id}`;  
+    return this.http.put<Holiday>(updateUrl, holiday);  
   }
 }
