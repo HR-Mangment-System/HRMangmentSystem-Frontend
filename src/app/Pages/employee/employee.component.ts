@@ -24,7 +24,7 @@ export class EmployeeComponent {
       departureTime: ''
     }
   };
-
+  message:string='';
   constructor(private http: HttpClient) {}
 
   saveEmployee(): void {
@@ -33,6 +33,7 @@ export class EmployeeComponent {
         .subscribe(
           (response) => {
             console.log('Employee data saved:', response);
+            this.message="Employee Added Successfully!"
             // Reset form after successful save
             this.resetForm();
           },
@@ -121,6 +122,7 @@ export class EmployeeComponent {
     const phoneRegex = /^\d{11}$/;
     return phoneRegex.test(phoneNumber);
   }
+
 
   isValidNationalID(nationalID: string): boolean {
     return nationalID.length >= 14;
