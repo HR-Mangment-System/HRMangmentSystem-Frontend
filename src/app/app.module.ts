@@ -17,6 +17,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { UpdateAttendenceComponent } from './Pop up/update-attendence/update-attendence.component';
 import { EmployeeSalaryComponent } from './employee-salary/employee-salary.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NotFoundComponent } from './Pages/not-found/not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AlertComponent,
     UpdateAttendenceComponent,
     EmployeeSalaryComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
