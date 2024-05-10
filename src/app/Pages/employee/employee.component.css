@@ -1,8 +1,10 @@
 .container {
-  background-color: #eae8e494;
+  background-color: white;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+ margin-bottom: 100px;
 }
 
 .btn {
@@ -59,4 +61,12 @@
 
 h3 {
   color: #333;
+}
+.form-group
+{
+  margin: 10px
+}
+.btn{
+  margin-left: 10px;
+  margin-right: 10px;
 }
