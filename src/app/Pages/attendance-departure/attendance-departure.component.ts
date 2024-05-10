@@ -11,6 +11,12 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 @Component({
   selector: 'app-attendance-departure',
   templateUrl: './attendance-departure.component.html',
@@ -18,11 +24,24 @@ import {
 })
 export class AttendanceDepartureComponent implements OnInit {
   attendancereport: any;
+  myForm: FormGroup;
   constructor(
+    private fb: FormBuilder,
     private _snackBar: MatSnackBar,
     public dialogRef: MatDialog,
     public AttendanceService: AttendanceService
-  ) {}
+  ) {
+    this.myForm = this.fb.group(
+      {
+        startDate: [
+          '',
+          [Validators.required, this.maxDateValidator(new Date())],
+        ],
+        endDate: ['', [Validators.required, this.endDateValidator.bind(this)]],
+      },
+      { validator: this.dateValidator }
+    );
+  }
   ngOnInit(): void {
     this.AttendanceService.getallAttendance().subscribe((data) => {
       this.attendancereport = data;
@@ -83,5 +102,43 @@ export class AttendanceDepartureComponent implements OnInit {
     this.dialogRef.open(UpdateAttendenceComponent, {
       data: { report: data },
     });
+  }
+  dateValidator(group: FormGroup) {
+    const startDate = group.get('startDate')?.value;
+    const endDate = group.get('endDate')?.value;
+
+    if (startDate && endDate && startDate > endDate) {
+      return { dateRangeError: true };
+    }
+
+    return null;
+  }
+  endDateValidator(control: AbstractControl) {
+    const selectedDate = new Date(control.value);
+    const currentDate = new Date();
+
+    if (selectedDate > currentDate) {
+      return { invalidEndDate: true };
+    }
+
+    return null;
+  }
+  maxDateValidator(maxDate: Date) {
+    return (control: AbstractControl) => {
+      const selectedDate = new Date(control.value);
+
+      if (
+        selectedDate.getFullYear() > maxDate.getFullYear() ||
+        (selectedDate.getFullYear() === maxDate.getFullYear() &&
+          selectedDate.getMonth() > maxDate.getMonth()) ||
+        (selectedDate.getFullYear() === maxDate.getFullYear() &&
+          selectedDate.getMonth() === maxDate.getMonth() &&
+          selectedDate.getDate() >= maxDate.getDate())
+      ) {
+        return { invalidStartDate: true };
+      }
+
+      return null;
+    };
   }
 }
