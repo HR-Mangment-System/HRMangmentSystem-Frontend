@@ -13,12 +13,13 @@ import { AnnualHolidaysComponent } from './Pages/annual-holidays/annual-holidays
 import { AlertComponent } from './Pop up/alert/alert.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
-import { UpdateAttendenceComponent } from './Pop up/update-attendence/update-attendence.component';
+import { manageattendenceComponent } from './Pop up/manage-attendence/manage-attendence.component';
 import { EmployeeSalaryComponent } from './employee-salary/employee-salary.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NotFoundComponent } from './Pages/not-found/not-found.component';
 import { DepartmentsComponent } from './Pages/departments/departments.component';
 import { AttendanceDepartureComponent } from './Pages/attendance-departure/attendance-departure.component';
+import { NgxPrintModule } from 'ngx-print';
 
 @NgModule({
   declarations: [
@@ -30,11 +31,11 @@ import { AttendanceDepartureComponent } from './Pages/attendance-departure/atten
     NavbarComponent,
     AnnualHolidaysComponent,
     AlertComponent,
-    UpdateAttendenceComponent,
+    manageattendenceComponent,
     EmployeeSalaryComponent,
     NotFoundComponent,
     DepartmentsComponent,
-    AttendanceDepartureComponent
+    AttendanceDepartureComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +46,7 @@ import { AttendanceDepartureComponent } from './Pages/attendance-departure/atten
     BrowserAnimationsModule,
     MatDialogModule,
     MatSnackBarModule,
+    NgxPrintModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

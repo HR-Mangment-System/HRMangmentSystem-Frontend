@@ -5,7 +5,7 @@ import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { AlertComponent } from 'src/app/Pop up/alert/alert.component';
 import { MatDialog } from '@angular/material/dialog';
-import { UpdateAttendenceComponent } from 'src/app/Pop up/update-attendence/update-attendence.component';
+import { manageattendenceComponent } from 'src/app/Pop up/manage-attendence/manage-attendence.component';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -17,6 +17,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { NgxPrintModule } from 'ngx-print';
 @Component({
   selector: 'app-attendance-departure',
   templateUrl: './attendance-departure.component.html',
@@ -25,6 +26,7 @@ import {
 export class AttendanceDepartureComponent implements OnInit {
   attendancereport: any;
   myForm: FormGroup;
+  searchText: string = '';
   constructor(
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
@@ -47,7 +49,6 @@ export class AttendanceDepartureComponent implements OnInit {
   ngOnInit(): void {
     this.AttendanceService.getallAttendance().subscribe((data) => {
       this.attendancereport = data;
-      console.log(this.attendancereport);
     });
   }
 
@@ -100,7 +101,7 @@ export class AttendanceDepartureComponent implements OnInit {
       data: { id: id, alerttype: 'delete', entityType: 'attendance' },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       // Handle the result if needed
       if (result) {
         // Reload attendance data or any other action you need after deletion
@@ -118,7 +119,7 @@ export class AttendanceDepartureComponent implements OnInit {
   }
 
   edit(data: any) {
-    this.dialogRef.open(UpdateAttendenceComponent, {
+    this.dialogRef.open(manageattendenceComponent, {
       data: { report: data },
     });
   }
@@ -159,5 +160,30 @@ export class AttendanceDepartureComponent implements OnInit {
 
       return null;
     };
+  }
+  search() {
+    const startDate = this.myForm.get('startDate')?.value;
+    const endDate = this.myForm.get('endDate')?.value;
+    if (this.searchText == '') {
+      this.AttendanceService.filterAttendanceByDateOnly(
+        startDate,
+        endDate
+      ).subscribe((data) => {
+        this.attendancereport = data;
+      });
+    } else {
+      this.AttendanceService.filterAttendanceByDateandname(
+        startDate,
+        endDate,
+        this.searchText
+      ).subscribe((data) => {
+        this.attendancereport = data;
+      });
+    }
+  }
+  reset() {
+    this.AttendanceService.getallAttendance().subscribe((data) => {
+      this.attendancereport = data;
+    });
   }
 }

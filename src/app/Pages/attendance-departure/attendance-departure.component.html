@@ -34,6 +34,7 @@
               class="form-control form-control-sm w-75 float-end"
               placeholder="Search by Employee name or Department name"
               aria-controls="datatable-buttons"
+              [(ngModel)]="searchText"
             />
           </div>
         </div>
@@ -41,7 +42,7 @@
         <div class="row my-4">
           <div class="row col-8">
             <form class="row" [formGroup]="myForm">
-              <div class="mb-3 col-5">
+              <div class="mb-3 col-4">
                 <label for="example-date" class="form-label">From</label>
                 <input
                   class="form-control w-75"
@@ -58,7 +59,7 @@
                   Start date cannot be today or after.
                 </div>
               </div>
-              <div class="mb-3 col-5">
+              <div class="mb-3 col-4">
                 <label for="example-date" class="form-label">To</label>
                 <input
                   class="form-control w-75"
@@ -83,8 +84,18 @@
                   [disabled]="myForm.invalid"
                   type="submit"
                   class="btn btn-soft-dark mt-3"
+                  (click)="search()"
                 >
                   Show
+                </button>
+              </div>
+              <div class="mb-3 col-2">
+                <button
+                  type="submit"
+                  class="btn btn-soft-dark mt-3"
+                  (click)="reset()"
+                >
+                  reset
                 </button>
               </div>
             </form>
@@ -92,6 +103,8 @@
           <div class="col-md-4 mt-1">
             <a
               class="action-icon mt-2 d-inline-block ms-2 me-5 float-end print"
+              printSectionId="content"
+              ngxPrint
             >
               <i class="font-36 ri-printer-line"></i
             ></a>

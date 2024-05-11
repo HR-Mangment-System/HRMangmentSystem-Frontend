@@ -15,11 +15,11 @@ import {
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 @Component({
-  selector: 'app-update-attendence',
-  templateUrl: './update-attendence.component.html',
-  styleUrls: ['./update-attendence.component.css'],
+  selector: 'app-manage-attendence',
+  templateUrl: './manage-attendence.component.html',
+  styleUrls: ['./manage-attendence.component.css'],
 })
-export class UpdateAttendenceComponent implements OnInit {
+export class manageattendenceComponent implements OnInit {
   timeForm: FormGroup;
   constructor(
     private router: Router,

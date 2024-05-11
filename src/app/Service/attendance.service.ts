@@ -16,4 +16,24 @@ export class AttendanceService {
   updateAttendence(data: any) {
     return this.http.put(this.baseUrl + '/UpdateAttendanceReport', data);
   }
+  filterAttendanceByDateOnly(fromDate: any, toDate: any) {
+    return this.http.get(
+      this.baseUrl +
+        '/GetAttendanceReportWithFilter?FromDate=' +
+        fromDate +
+        '&ToDate=' +
+        toDate
+    );
+  }
+  filterAttendanceByDateandname(fromDate: any, toDate: any, name: any) {
+    return this.http.get(
+      this.baseUrl +
+        '/GetAttendanceReportWithFilter?EmpNameOrDeptName=' +
+        name +
+        '&FromDate=' +
+        fromDate +
+        '&ToDate=' +
+        toDate
+    );
+  }
 }
