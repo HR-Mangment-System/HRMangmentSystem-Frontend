@@ -1,0 +1,96 @@
+<div class="container">
+  <h2 class="text-center mb-4"><strong>Settings Management</strong></h2>
+  <div class="row flex text-center justify-content-center">
+    <div class="col-md-6">
+      <form>
+        <div class="form-group">
+          <label for="id">ID:</label>
+          <input
+            type="number"
+            id="id"
+            [(ngModel)]="settings.id"
+            name="id"
+            required
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="bonusRate">Bonus Rate:</label>
+          <input
+            type="number"
+            id="bonusRate"
+            [(ngModel)]="settings.bonusRate"
+            name="bonusRate"
+            required
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="penaltyRate">Penalty Rate:</label>
+          <input
+            type="number"
+            id="penaltyRate"
+            [(ngModel)]="settings.penaltyRate"
+            name="penaltyRate"
+            required
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="weeklyHoliday1">Weekly Holiday 1:</label>
+          <select
+            id="weeklyHoliday1"
+            [(ngModel)]="settings.weeklyHoliday1"
+            name="weeklyHoliday1"
+            required
+            class="form-control"
+          >
+            <option *ngFor="let day of daysOfWeek" [value]="day">
+              {{ day }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="weeklyHoliday2">Weekly Holiday 2:</label>
+          <select
+            id="weeklyHoliday2"
+            [(ngModel)]="settings.weeklyHoliday2"
+            name="weeklyHoliday2"
+            required
+            class="form-control"
+          >
+            <option *ngFor="let day of daysOfWeek" [value]="day">
+              {{ day }}
+            </option>
+          </select>
+        </div>
+      </form>
+      <div class="message">
+        <p>{{ message }}</p>
+      </div>
+      <div class="buttons mt-4">
+        <button
+          type="button"
+          (click)="createSettings()"
+          class="btn btn-primary"
+        >
+          Create
+        </button>
+        <button
+          type="button"
+          (click)="updateSettings()"
+          class="btn btn-success"
+        >
+          Update
+        </button>
+        <button
+          type="button"
+          (click)="deleteSettings(settings.id)"
+          class="btn btn-danger"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
