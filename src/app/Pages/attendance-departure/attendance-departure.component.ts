@@ -28,7 +28,7 @@ export class AttendanceDepartureComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
-    public dialogRef: MatDialog,
+    public dialogRef: MatDialog, // Change this to MatDialog
     public AttendanceService: AttendanceService
   ) {
     this.myForm = this.fb.group(
@@ -42,6 +42,8 @@ export class AttendanceDepartureComponent implements OnInit {
       { validator: this.dateValidator }
     );
   }
+  // Rest of the component code...
+
   ngOnInit(): void {
     this.AttendanceService.getallAttendance().subscribe((data) => {
       this.attendancereport = data;
@@ -94,10 +96,27 @@ export class AttendanceDepartureComponent implements OnInit {
     doc.save('table.pdf');
   }
   delete(id: number) {
-    this.dialogRef.open(AlertComponent, {
-      data: { id: id, alerttype: 'delete' },
+    const dialogRef = this.dialogRef.open(AlertComponent, {
+      data: { id: id, alerttype: 'delete', entityType: 'attendance' },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // Handle the result if needed
+      if (result) {
+        // Reload attendance data or any other action you need after deletion
+        this.reloadAttendanceData();
+      }
     });
   }
+
+  reloadAttendanceData() {
+    // Reload attendance data or navigate to the previous page
+    // Example:
+    this.AttendanceService.getallAttendance().subscribe((data) => {
+      this.attendancereport = data;
+    });
+  }
+
   edit(data: any) {
     this.dialogRef.open(UpdateAttendenceComponent, {
       data: { report: data },
