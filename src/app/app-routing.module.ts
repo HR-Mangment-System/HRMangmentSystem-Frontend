@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'user-register',component: UserRegisterComponent},
   {path: 'employee',component: EmployeeComponent},
   {path: 'attendance-departure',component: AttendanceDepartureComponent},
-  {path: 'employee-salary',component: EmployeeSalaryComponent}
+  {path: 'employee-salary',component: EmployeeSalaryComponent},
   {path: 'attendance-departure',component: AttendanceDepartureComponent},
   {path: 'annual-holidays',component: AnnualHolidaysComponent},
 

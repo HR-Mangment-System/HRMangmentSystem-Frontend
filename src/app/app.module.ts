@@ -9,11 +9,11 @@ import { UsersGroupsComponent } from './Pages/users-groups/users-groups.componen
 import { UserRegisterComponent } from './Pages/user-register/user-register.component';
 import { EmployeeComponent } from './Pages/employee/employee.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
-import { AttendanceDepartureComponent } from './Pages/attendance-departure/attendance-departure.component';
 import { AnnualHolidaysComponent } from './Pages/annual-holidays/annual-holidays.component';
 import { AlertComponent } from './Pop up/alert/alert.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmployeeSalaryComponent } from './employee-salary/employee-salary.component';
+import { AttendanceDepartureComponent } from './Pages/attendance-departure/attendance-departure.component';
 
 @NgModule({
   declarations: [
@@ -22,10 +22,10 @@ import { EmployeeSalaryComponent } from './employee-salary/employee-salary.compo
     UsersGroupsComponent, UserRegisterComponent,
     EmployeeComponent,
     NavbarComponent,
-    AttendanceDepartureComponent,
     AnnualHolidaysComponent,
     AlertComponent,
     EmployeeSalaryComponent,
+    AttendanceDepartureComponent
   ],
   imports: [
     BrowserModule,
