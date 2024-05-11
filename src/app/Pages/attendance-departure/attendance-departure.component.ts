@@ -102,17 +102,13 @@ export class AttendanceDepartureComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      // Handle the result if needed
       if (result) {
-        // Reload attendance data or any other action you need after deletion
         this.reloadAttendanceData();
       }
     });
   }
 
   reloadAttendanceData() {
-    // Reload attendance data or navigate to the previous page
-    // Example:
     this.AttendanceService.getallAttendance().subscribe((data) => {
       this.attendancereport = data;
     });
@@ -184,6 +180,19 @@ export class AttendanceDepartureComponent implements OnInit {
   reset() {
     this.AttendanceService.getallAttendance().subscribe((data) => {
       this.attendancereport = data;
+    });
+  }
+  add() {
+    this.dialogRef.open(manageattendenceComponent, {
+      data: {
+        report: {
+          departmentName: '',
+          employeeName: '',
+          arrivalTime: '',
+          departureTime: '',
+          date: '',
+        },
+      },
     });
   }
 }
