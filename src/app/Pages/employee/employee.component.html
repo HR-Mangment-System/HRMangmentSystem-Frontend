@@ -1,73 +1,268 @@
-<!-- employee-.component.html -->
+<br />
+<br />
 <div class="container">
-  <h2>Employee Data Entry</h2>
-  <form #employeeForm="ngForm" (ngSubmit)="saveEmployee()">
-    <div class="personal-info">
-      <h3>Personal Information</h3>
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" [(ngModel)]="employee.personal.name" name="name" required #name="ngModel">
-        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error-message">
-          <div *ngIf="name.errors?.[required]==true">Name is required.</div>
+  <h2 class="text-center mb-4"><strong>Employee Data Entry</strong></h2>
+  <div class="row">
+    <div class="col-md-6">
+      <form #employeeForm="ngForm" (ngSubmit)="saveEmployee()">
+        <div class="personal-info">
+          <h3><strong>Personal Information</strong></h3>
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              [(ngModel)]="employee.personal.name"
+              name="name"
+              [required]="true"
+              #name="ngModel"
+              class="form-control"
+            />
+            <div
+              *ngIf="name.invalid && (name.dirty || name.touched)"
+              class="error-message"
+            >
+              <div *ngIf="name.errors?.['required']" class="text-danger">
+                Name is required.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="address">Address:</label>
+            <input
+              type="text"
+              id="address"
+              [(ngModel)]="employee.personal.address"
+              name="address"
+              [required]="true"
+              class="form-control"
+              #address="ngModel"
+            />
+            <div
+              *ngIf="address.invalid && (address.dirty || address.touched)"
+              class="error-message"
+            >
+              <div *ngIf="address.errors?.['required']" class="text-danger">
+                Address is required.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input
+              type="tel"
+              id="phoneNumber"
+              [(ngModel)]="employee.personal.phoneNumber"
+              name="phoneNumber"
+              [required]="true"
+              pattern="[0-9]{11}"
+              class="form-control"
+              #phone="ngModel"
+            />
+            <div
+              *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+              class="error-message"
+            >
+              <div *ngIf="phone.errors?.['required']" class="text-danger">
+                Phone is required.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="dateOfBirth">Date of Birth:</label>
+            <input
+              type="date"
+              id="dateOfBirth"
+              [(ngModel)]="employee.personal.dateOfBirth"
+              name="dateOfBirth"
+              [required]="true"
+              class="form-control"
+              #date="ngModel"
+            />
+            <div
+            *ngIf="date.invalid && (date.dirty || date.touched)"
+            class="error-message"
+          >
+            <div *ngIf="date.errors?.['required']" class="text-danger">
+              Date is required.
+            </div>
+          </div>
+          </div>
+          <div class="form-group">
+            <label for="nationalID">National ID:</label>
+            <input
+              type="text"
+              id="nationalID"
+              [(ngModel)]="employee.personal.nationalID"
+              name="nationalID"
+              [required]="true"
+              pattern="[0-9]{14}"
+              class="form-control"
+              #id="ngModel"
+            />
+            <div
+            *ngIf="id.invalid && (id.dirty || id.touched)"
+            class="error-message"
+          >
+            <div *ngIf="id.errors?.['required']" class="text-danger">
+              National ID is required.
+            </div>
+          </div>
+          </div>
+          <div class="form-group">
+            <label for="nationality">Nationality:</label>
+            <input
+              type="text"
+              id="nationality"
+              [(ngModel)]="employee.personal.nationality"
+              name="nationality"
+              [required]="true"
+              class="form-control"
+              #nationality="ngModel"
+            />
+            <div
+            *ngIf="nationality.invalid && (nationality.dirty || nationality.touched)"
+            class="error-message"
+          >
+            <div *ngIf="nationality.errors?.['required']" class="text-danger">
+              Nationality is required.
+            </div>
+          </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <div class="work-related-info">
+        <h3><strong>Work-Related Information</strong></h3>
+        <div class="form-group">
+          <label for="contractDate">Contract Date:</label>
+          <input
+            type="date"
+            id="contractDate"
+            [(ngModel)]="employee.workRelated.contractDate"
+            name="contractDate"
+            [required]="true"
+            class="form-control"
+            #Cdate="ngModel"
+          />
+
+          <div
+          *ngIf="Cdate.invalid && (Cdate.dirty || Cdate.touched)"
+          class="error-message"
+        >
+          <div *ngIf="Cdate.errors?.['required']" class="text-danger">
+            Contract Date is required.
+          </div>
+        </div>
+        </div>
+        <div class="form-group">
+          <label for="salary">Salary:</label>
+          <input
+            type="text"
+            id="salary"
+            [(ngModel)]="employee.workRelated.salary"
+            name="salary"
+            [required]="true"
+            pattern="[0-9]+"
+            class="form-control"
+            #salary="ngModel"
+          />
+          <div
+          *ngIf="salary.invalid && (salary.dirty || salary.touched)"
+          class="error-message"
+        >
+          <div *ngIf="salary.errors?.['required']" class="text-danger">
+            Salary is required.
+          </div>
+        </div>
+        </div>
+        <div class="form-group">
+          <label for="attendanceTime">Attendance Time:</label>
+          <input
+            type="time"
+            id="attendanceTime"
+            [(ngModel)]="employee.workRelated.attendanceTime"
+            name="attendanceTime"
+            [required]="true"
+            class="form-control"
+            #ATime="ngModel"
+          />
+
+          <div
+          *ngIf="ATime.invalid && (ATime.dirty || ATime.touched)"
+          class="error-message"
+        >
+          <div *ngIf="ATime.errors?.['required']" class="text-danger">
+            Attendance Time is required.
+          </div>
+        </div>
+        </div>
+        <div class="form-group">
+          <label for="departureTime">Departure Time:</label>
+          <input
+            type="time"
+            id="departureTime"
+            [(ngModel)]="employee.workRelated.departureTime"
+            name="departureTime"
+            [required]="true"
+            class="form-control"
+            #DTime="ngModel"
+          />
+          <div
+          *ngIf="DTime.invalid && (DTime.dirty || DTime.touched)"
+          class="error-message"
+        >
+          <div *ngIf="DTime.errors?.['required']" class="text-danger">
+            Departure Time is required.
+          </div>
+        </div>
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender:</label>
+          <select
+            id="gender"
+            [(ngModel)]="employee.personal.gender"
+            name="gender"
+            [required]="true"
+            class="form-control"
+          >
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+
+        </div>
+        <div class="message">
+          <div class="alert alert-success" *ngIf="message">
+            <p>{{message}}</p>
+          </div>
+        </div>
+        <div class="buttons mt-4 d-flex justify-content-center">
+          <!-- Updated: Center align buttons -->
+          <button
+            type="submit"
+            [disabled]="employeeForm.invalid"
+            class="btn btn-primary"
+          >
+            Save
+          </button>
+          <button
+            type="button"
+            (click)="editEmployee()"
+            class="btn btn-secondary"
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            (click)="deleteEmployee()"
+            class="btn btn-danger"
+          >
+            Delete
+          </button>
         </div>
       </div>
-      <div class="form-group">
-        <label for="address">Address:</label>
-        <input type="text" id="address" [(ngModel)]="employee.personal.address" name="address" required>
-      </div>
-      <div class="form-group">
-        <label for="phoneNumber">Phone Number:</label>
-        <input type="tel" id="phoneNumber" [(ngModel)]="employee.personal.phoneNumber" name="phoneNumber"
-          required pattern="[0-9]{11}">
-      </div>
-      <div class="form-group">
-        <label for="dateOfBirth">Date of Birth:</label>
-        <input type="date" id="dateOfBirth" [(ngModel)]="employee.personal.dateOfBirth" name="dateOfBirth" required>
-      </div>
-      <div class="form-group">
-        <label for="gender">Gender:</label>
-        <select id="gender" [(ngModel)]="employee.personal.gender" name="gender" required>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="nationalID">National ID:</label>
-        <input type="text" id="nationalID" [(ngModel)]="employee.personal.nationalID" name="nationalID" required
-          pattern="[0-9]{14}">
-      </div>
-      <div class="form-group">
-        <label for="nationality">Nationality:</label>
-        <input type="text" id="nationality" [(ngModel)]="employee.personal.nationality" name="nationality" required>
-      </div>
     </div>
-    <div class="work-related-info">
-      <h3>Work-Related Information</h3>
-      <div class="form-group">
-        <label for="contractDate">Contract Date:</label>
-        <input type="date" id="contractDate" [(ngModel)]="employee.workRelated.contractDate" name="contractDate"
-          required>
-      </div>
-      <div class="form-group">
-        <label for="salary">Salary:</label>
-        <input type="text" id="salary" [(ngModel)]="employee.workRelated.salary" name="salary" required pattern="[0-9]+">
-      </div>
-      <div class="form-group">
-        <label for="attendanceTime">Attendance Time:</label>
-        <input type="time" id="attendanceTime" [(ngModel)]="employee.workRelated.attendanceTime" name="attendanceTime"
-          required>
-      </div>
-      <div class="form-group">
-        <label for="departureTime">Departure Time:</label>
-        <input type="time" id="departureTime" [(ngModel)]="employee.workRelated.departureTime" name="departureTime"
-          required>
-      </div>
-    </div>
-    <div class="buttons">
-      <button type="submit" [disabled]="employeeForm.invalid">Save</button>
-      <button type="button" (click)="editEmployee()">Edit</button>
-      <button type="button" (click)="deleteEmployee()">Delete</button>
-    </div>
-  </form>
+  </div>
 </div>

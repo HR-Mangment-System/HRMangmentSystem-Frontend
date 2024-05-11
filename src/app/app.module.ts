@@ -12,19 +12,28 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { AnnualHolidaysComponent } from './Pages/annual-holidays/annual-holidays.component';
 import { AlertComponent } from './Pop up/alert/alert.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UpdateAttendenceComponent } from './Pop up/update-attendence/update-attendence.component';
 import { EmployeeSalaryComponent } from './employee-salary/employee-salary.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NotFoundComponent } from './Pages/not-found/not-found.component';
+import { DepartmentsComponent } from './Pages/departments/departments.component';
 import { AttendanceDepartureComponent } from './Pages/attendance-departure/attendance-departure.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
-    UsersGroupsComponent, UserRegisterComponent,
+    UsersGroupsComponent,
+    UserRegisterComponent,
     EmployeeComponent,
     NavbarComponent,
     AnnualHolidaysComponent,
     AlertComponent,
+    UpdateAttendenceComponent,
     EmployeeSalaryComponent,
+    NotFoundComponent,
+    DepartmentsComponent,
     AttendanceDepartureComponent
   ],
   imports: [
@@ -34,6 +43,8 @@ import { AttendanceDepartureComponent } from './Pages/attendance-departure/atten
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatDialogModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

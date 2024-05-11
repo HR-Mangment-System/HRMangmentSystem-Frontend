@@ -7,17 +7,19 @@ import { EmployeeComponent } from './Pages/employee/employee.component';
 import { AttendanceDepartureComponent } from './Pages/attendance-departure/attendance-departure.component';
 import { EmployeeSalaryComponent } from './employee-salary/employee-salary.component';
 import { AnnualHolidaysComponent } from './Pages/annual-holidays/annual-holidays.component';
+import { NotFoundComponent } from './Pages/not-found/not-found.component';
+import { DepartmentsComponent } from './Pages/departments/departments.component';
 
 const routes: Routes = [
-  { path: '', component: SigninComponent },
-  {path: 'users-groups',component: UsersGroupsComponent},
-  {path: 'user-register',component: UserRegisterComponent},
-  {path: 'employee',component: EmployeeComponent},
-  {path: 'attendance-departure',component: AttendanceDepartureComponent},
-  {path: 'employee-salary',component: EmployeeSalaryComponent},
-  {path: 'attendance-departure',component: AttendanceDepartureComponent},
-  {path: 'annual-holidays',component: AnnualHolidaysComponent},
-
+  { path: '', component: AttendanceDepartureComponent },
+  { path: 'users-groups', component: UsersGroupsComponent },
+  { path: 'user-register', component: UserRegisterComponent },
+  { path: 'employee', component: EmployeeComponent },
+  { path: 'attendance-departure', component: AttendanceDepartureComponent },
+  { path: 'employee-salary', component: EmployeeSalaryComponent },
+  { path: 'annual-holidays', component: AnnualHolidaysComponent },
+  {path: 'department', component: DepartmentsComponent},
+  {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({

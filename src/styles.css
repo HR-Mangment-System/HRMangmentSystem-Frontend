@@ -21840,7 +21840,7 @@ html[data-theme="dark"] .auth-brand .logo-dark {
   color: var(--ct-primary);
   text-shadow: rgba(var(--ct-primary-rgb), 0.3) 5px 1px,
     rgba(var(--ct-primary-rgb), 0.2) 10px 3px;
-  font-size: 5.25rem;
+  font-size: 5.52rem !important;
   line-height: 5.625rem;
 }
 

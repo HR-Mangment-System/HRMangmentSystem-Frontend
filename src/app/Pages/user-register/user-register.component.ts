@@ -11,7 +11,7 @@ export class UserRegisterComponent implements OnInit {
   registrationForm!: FormGroup;
   groups: { id: string, name: string }[] = [];
 
-  constructor(private formBuilder: FormBuilder , private userRegisterService: UserRegisterService , private userGroupsService: UsersGroupsService) { }
+  constructor(private formBuilder: FormBuilder, private userRegisterService: UserRegisterService, private userGroupsService: UsersGroupsService) { }
 
 
   ngOnInit(): void {
@@ -23,23 +23,23 @@ export class UserRegisterComponent implements OnInit {
       confirmPassword: ['', Validators.required], // Add confirmPassword field
       groupId: ['', Validators.required]
     }, { validators: this.passwordMatchValidator });
-      this.fetchGroups();
+    this.fetchGroups();
   }
-     fetchGroups(){
-       this.userGroupsService.getGroups().subscribe({
-         next: (response:any) => {
-           // Handle successful registration
-           this.groups = response.data.map((group: any) => {
-            return { id: group.id, name: group.name };
-          });
-                     console.log('Groups fetched successfully:', this.groups);
-          },
-         error: (error:any) => {
-           // Handle registration error
-           console.error('Error fetching groups:', error);
-         }
-       })
-     }
+  fetchGroups() {
+    this.userGroupsService.getGroups().subscribe({
+      next: (response: any) => {
+        // Handle successful registration
+        this.groups = response.data.map((group: any) => {
+          return { id: group.id, name: group.name };
+        });
+        console.log('Groups fetched successfully:', this.groups);
+      },
+      error: (error: any) => {
+        // Handle registration error
+        console.error('Error fetching groups:', error);
+      }
+    })
+  }
 
   passwordMatchValidator(formGroup: FormGroup) {
     const password = formGroup.get('password')?.value;

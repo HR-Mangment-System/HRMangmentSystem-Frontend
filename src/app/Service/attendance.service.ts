@@ -11,6 +11,9 @@ export class AttendanceService {
     return this.http.get(this.baseUrl + '/GetAttendanceReport');
   }
   deleteAttendance(id: number) {
-    return this.http.delete(`${this.baseUrl}/DeleteAttendanceReport?id=${id}`);
+    return this.http.delete(this.baseUrl + '/DeleteAttendanceReport?id=' + id);
+  }
+  updateAttendence(data: any) {
+    return this.http.put(this.baseUrl + '/UpdateAttendanceReport', data);
   }
 }

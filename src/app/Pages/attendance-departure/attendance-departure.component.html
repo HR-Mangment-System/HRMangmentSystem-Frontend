@@ -40,27 +40,54 @@
 
         <div class="row my-4">
           <div class="row col-8">
-            <div class="mb-3 col-5">
-              <label for="example-date" class="form-label">From</label>
-              <input
-                class="form-control w-75"
-                id="example-date"
-                type="date"
-                name="date"
-              />
-            </div>
-            <div class="mb-3 col-5">
-              <label for="example-date" class="form-label">To</label>
-              <input
-                class="form-control w-75"
-                id="example-date"
-                type="date"
-                name="date"
-              />
-            </div>
-            <div class="mb-3 col-2">
-              <button type="button" class="btn btn-soft-dark mt-3">Show</button>
-            </div>
+            <form class="row" [formGroup]="myForm">
+              <div class="mb-3 col-5">
+                <label for="example-date" class="form-label">From</label>
+                <input
+                  class="form-control w-75"
+                  id="example-date"
+                  type="date"
+                  formControlName="startDate"
+                />
+                <div
+                  *ngIf="
+                    myForm.get('startDate')?.hasError('invalidStartDate') &&
+                    myForm.get('startDate')?.dirty
+                  "
+                >
+                  Start date cannot be today or after.
+                </div>
+              </div>
+              <div class="mb-3 col-5">
+                <label for="example-date" class="form-label">To</label>
+                <input
+                  class="form-control w-75"
+                  id="example-date"
+                  type="date"
+                  formControlName="endDate"
+                />
+                <div *ngIf="myForm.errors?.['dateRangeError']">
+                  Start date must be before end date.
+                </div>
+                <div
+                  *ngIf="
+                    myForm.get('endDate')?.hasError('invalidEndDate') &&
+                    myForm.get('endDate')?.dirty
+                  "
+                >
+                  End date cannot be after today.
+                </div>
+              </div>
+              <div class="mb-3 col-2">
+                <button
+                  [disabled]="myForm.invalid"
+                  type="submit"
+                  class="btn btn-soft-dark mt-3"
+                >
+                  Show
+                </button>
+              </div>
+            </form>
           </div>
           <div class="col-md-4 mt-1">
             <a
@@ -93,7 +120,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngFor="let data of attendancereport.data">
               <td class="table-user">{{ data.id }}</td>
               <td>{{ data.departmentName }}</td>
               <td>{{ data.employeeName }}</td>
@@ -101,10 +128,15 @@
               <td>{{ data.departureTime }}</td>
               <td>{{ data.attendanceDate }}</td>
               <td class="table-action">
-                <a href="javascript: void(0);" class="action-icon">
+                <a (click)="edit(data)" class="action-icon">
                   <i class="mdi mdi-pencil"></i
                 ></a>
-                <a href="javascript: void(0);" class="action-icon">
+                <a
+                  (click)="delete(data.id)"
+                  class="action-icon"
+                  data-bs-toggle="modal"
+                  data-bs-target="#centermodal"
+                >
                   <i class="mdi mdi-delete"></i
                 ></a>
               </td>

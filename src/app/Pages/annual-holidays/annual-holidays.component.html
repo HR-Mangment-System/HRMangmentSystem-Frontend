@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <div class="card">
-        <h3 class="card-header text-center py-3">Annual Holidays</h3>
+        <h2 class="card-header text-center py-3">Annual Holidays</h2>
         <div class="card-body">
             <form [formGroup]="formHoliday">
                 <div class="row">
@@ -44,13 +44,14 @@
                     </div>
                 </div>
                 <div class="text-center py-3"> 
-                    <button id="save" class="btn btn-primary" (click)="createHoliday()">Save</button>
+                    <button id="save" class="btn btn-primary" (click)="save()">Save</button>
                 </div>
             </form>
             <div class="table-container" style="max-height: 200px; overflow-y: auto;">
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Name</th>
                             <th>Date</th>
                             <th>Actions</th>
@@ -58,13 +59,14 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let h of Holidays ">
+                            <td>{{h.id}}</td>
                             <td>{{h.holidayName}}</td>
                             <td>{{h.holidayDate}}</td>
                             <td>
                             <button class="btn btn-sm btn-outline-primary">
-                                <span class="bi bi-pencil"></span>
+                                <span class="bi bi-pencil" (click)="setUpdate(h)" ></span>
                             </button>
-                            <button class="btn btn-sm btn-outline-danger mr-1" (click)="deleteHoliday(h.holidayId)">
+                            <button class="btn btn-sm btn-outline-danger mr-1" (click)="deleteHoliday(h.id)">
                                 <span class="bi bi-trash"></span>
                             </button>
                             </td>
