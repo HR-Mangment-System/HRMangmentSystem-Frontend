@@ -18,6 +18,7 @@ import { UpdateAttendenceComponent } from './Pop up/update-attendence/update-att
 import { EmployeeSalaryComponent } from './employee-salary/employee-salary.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NotFoundComponent } from './Pages/not-found/not-found.component';
+import { DepartmentsComponent } from './Pages/departments/departments.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { NotFoundComponent } from './Pages/not-found/not-found.component';
     UpdateAttendenceComponent,
     EmployeeSalaryComponent,
     NotFoundComponent,
+    DepartmentsComponent,
   ],
   imports: [
     BrowserModule,

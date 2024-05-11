@@ -8,6 +8,7 @@ import { AttendanceDepartureComponent } from './Pages/attendance-departure/atten
 import { EmployeeSalaryComponent } from './employee-salary/employee-salary.component';
 import { AnnualHolidaysComponent } from './Pages/annual-holidays/annual-holidays.component';
 import { NotFoundComponent } from './Pages/not-found/not-found.component';
+import { DepartmentsComponent } from './Pages/departments/departments.component';
 
 const routes: Routes = [
   { path: '', component: AttendanceDepartureComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'attendance-departure', component: AttendanceDepartureComponent },
   { path: 'employee-salary', component: EmployeeSalaryComponent },
   { path: 'annual-holidays', component: AnnualHolidaysComponent },
+  {path: 'department', component: DepartmentsComponent},
   {path: '**', component: NotFoundComponent}
 ];
 
