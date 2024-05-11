@@ -8,40 +8,40 @@
   <div class="modal-dialog w-100">
     <div class="modal-content">
       <div class="modal-body">
-        <div class="mb-3">
-          <label for="arrivalTime" class="form-label">Department</label>
-          <input
-            class="form-control"
-            type="text"
-            id="arrivalTime"
-            required=""
-            [disabled]="true"
-            value="{{ data.report.departmentName }}"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="arrivalTime" class="form-label">Employee Name</label>
-          <input
-            class="form-control"
-            type="text"
-            id="arrivalTime"
-            required=""
-            [disabled]="true"
-            value="{{ data.report.employeeName }}"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="arrivalTime" class="form-label">Date</label>
-          <input
-            class="form-control"
-            type="text"
-            id="arrivalTime"
-            required=""
-            [disabled]="true"
-            value="{{ data.report.attendanceDate }}"
-          />
-        </div>
         <form [formGroup]="timeForm" (ngSubmit)="confirm()">
+          <div class="mb-3">
+            <label for="arrivalTime" class="form-label">Department</label>
+            <input
+              class="form-control"
+              type="text"
+              id="arrivalTime"
+              required=""
+              [disabled]="disabledFlag"
+              value="{{ data.report.departmentName }}"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="arrivalTime" class="form-label">Employee Name</label>
+            <input
+              class="form-control"
+              type="text"
+              id="arrivalTime"
+              required=""
+              [disabled]="disabledFlag"
+              value="{{ data.report.employeeName }}"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="arrivalTime" class="form-label">Date</label>
+            <input
+              class="form-control"
+              type="text"
+              id="arrivalTime"
+              required=""
+              [disabled]="disabledFlag"
+              value="{{ data.report.attendanceDate }}"
+            />
+          </div>
           <div class="mb-3">
             <label for="arrivalTime" class="form-label">arrival Time</label>
             <input

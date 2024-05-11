@@ -21,6 +21,7 @@ import {
 })
 export class manageattendenceComponent implements OnInit {
   timeForm: FormGroup;
+  disabledFlag = true;
   constructor(
     private router: Router,
     private _snackBar: MatSnackBar,
@@ -38,7 +39,9 @@ export class manageattendenceComponent implements OnInit {
     );
   }
   ngOnInit(): void {
-    console.log(this.data.report);
+    if (this.data.report.employeeName == '') {
+      this.disabledFlag = false;
+    }
   }
   confirm() {
     this.data.report.arrivalTime = this.timeForm.controls['startTime'].value;
