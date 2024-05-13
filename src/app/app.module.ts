@@ -20,6 +20,7 @@ import { NotFoundComponent } from './Pages/not-found/not-found.component';
 import { DepartmentsComponent } from './Pages/departments/departments.component';
 import { AttendanceDepartureComponent } from './Pages/attendance-departure/attendance-departure.component';
 import { NgxPrintModule } from 'ngx-print';
+import { SettingComponent } from './Components/setting/setting.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { NgxPrintModule } from 'ngx-print';
     NotFoundComponent,
     DepartmentsComponent,
     AttendanceDepartureComponent,
+    SettingComponent,
   ],
   imports: [
     BrowserModule,

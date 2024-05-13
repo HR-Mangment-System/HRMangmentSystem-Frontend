@@ -9,6 +9,7 @@ import { EmployeeSalaryComponent } from './employee-salary/employee-salary.compo
 import { AnnualHolidaysComponent } from './Pages/annual-holidays/annual-holidays.component';
 import { NotFoundComponent } from './Pages/not-found/not-found.component';
 import { DepartmentsComponent } from './Pages/departments/departments.component';
+import { SettingComponent } from './Components/setting/setting.component';
 
 const routes: Routes = [
   { path: '', component: AttendanceDepartureComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'employee-salary', component: EmployeeSalaryComponent },
   { path: 'annual-holidays', component: AnnualHolidaysComponent },
   {path: 'department', component: DepartmentsComponent},
+  { path: 'general-settings', component: SettingComponent },
   {path: '**', component: NotFoundComponent}
 ];
 
