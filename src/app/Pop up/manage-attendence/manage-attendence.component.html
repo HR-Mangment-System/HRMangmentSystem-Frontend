@@ -9,37 +9,47 @@
     <div class="modal-content">
       <div class="modal-body">
         <form [formGroup]="timeForm" (ngSubmit)="confirm()">
-          <div class="mb-3">
+          <div class="mb-3" *ngIf="Flag">
             <label for="arrivalTime" class="form-label">Department</label>
             <input
               class="form-control"
               type="text"
               id="arrivalTime"
               required=""
-              [disabled]="disabledFlag"
+              [disabled]="true"
               value="{{ data.report.departmentName }}"
             />
           </div>
-          <div class="mb-3">
+          <div class="mb-3" *ngIf="Flag">
             <label for="arrivalTime" class="form-label">Employee Name</label>
             <input
               class="form-control"
               type="text"
               id="arrivalTime"
               required=""
-              [disabled]="disabledFlag"
+              [disabled]="true"
               value="{{ data.report.employeeName }}"
             />
           </div>
-          <div class="mb-3">
+          <div class="mb-3" *ngIf="Flag">
             <label for="arrivalTime" class="form-label">Date</label>
             <input
               class="form-control"
               type="text"
               id="arrivalTime"
               required=""
-              [disabled]="disabledFlag"
+              [disabled]="true"
               value="{{ data.report.attendanceDate }}"
+            />
+          </div>
+          <div class="mb-3" *ngIf="!Flag">
+            <label for="arrivalTime" class="form-label">Employee Name</label>
+            <input
+              class="form-control"
+              type="text"
+              id="arrivalTime"
+              required=""
+              value="{{ data.report.employeeName }}"
             />
           </div>
           <div class="mb-3">

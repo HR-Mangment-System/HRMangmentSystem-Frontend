@@ -21,7 +21,7 @@ import {
 })
 export class manageattendenceComponent implements OnInit {
   timeForm: FormGroup;
-  disabledFlag = true;
+  Flag = true;
   constructor(
     private router: Router,
     private _snackBar: MatSnackBar,
@@ -40,7 +40,7 @@ export class manageattendenceComponent implements OnInit {
   }
   ngOnInit(): void {
     if (this.data.report.employeeName == '') {
-      this.disabledFlag = false;
+      this.Flag = false;
     }
   }
   confirm() {
