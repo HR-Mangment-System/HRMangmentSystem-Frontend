@@ -21,6 +21,9 @@ import { DepartmentsComponent } from './Pages/departments/departments.component'
 import { AttendanceDepartureComponent } from './Pages/attendance-departure/attendance-departure.component';
 import { NgxPrintModule } from 'ngx-print';
 import { SettingComponent } from './Components/setting/setting.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { AsyncPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,9 @@ import { SettingComponent } from './Components/setting/setting.component';
     MatDialogModule,
     MatSnackBarModule,
     NgxPrintModule,
+    MatSelectModule,
+    MatAutocompleteModule,
+    AsyncPipe,
   ],
   providers: [],
   bootstrap: [AppComponent],

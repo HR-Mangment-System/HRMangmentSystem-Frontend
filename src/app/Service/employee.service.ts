@@ -13,7 +13,6 @@ export class EmployeeService {
   }
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    // Add other headers as needed
   });
   options = { headers: this.headers };
   apiURL = 'http://localhost:5023/api/Employees/';

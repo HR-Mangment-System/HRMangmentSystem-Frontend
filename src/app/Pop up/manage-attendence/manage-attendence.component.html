@@ -20,16 +20,22 @@
               value="{{ data.report.departmentName }}"
             />
           </div>
-          <div class="mb-3" *ngIf="Flag">
+          <div class="mb-3">
             <label for="arrivalTime" class="form-label">Employee Name</label>
             <input
               class="form-control"
               type="text"
-              id="arrivalTime"
-              required=""
-              [disabled]="true"
-              value="{{ data.report.employeeName }}"
+              matInput
+              [matAutocomplete]="auto"
+              formControlName="EmployeeNames"
             />
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option
+                *ngFor="let option of filterdemployee | async"
+                [value]="option"
+                >{{ option.name }}</mat-option
+              >
+            </mat-autocomplete>
           </div>
           <div class="mb-3" *ngIf="Flag">
             <label for="arrivalTime" class="form-label">Date</label>
@@ -42,7 +48,7 @@
               value="{{ data.report.attendanceDate }}"
             />
           </div>
-          <div class="mb-3" *ngIf="!Flag">
+          <div class="mb-3" *ngIf="Flag">
             <label for="arrivalTime" class="form-label">Employee Name</label>
             <input
               class="form-control"
