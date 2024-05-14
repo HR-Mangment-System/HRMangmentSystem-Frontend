@@ -26,7 +26,6 @@ export class manageattendenceComponent implements OnInit {
   timeForm: FormGroup;
   Flag = true;
   employees: any;
-  filterdemployee: Observable<any> = new Observable();
   constructor(
     private router: Router,
     private _snackBar: MatSnackBar,
@@ -54,16 +53,6 @@ export class manageattendenceComponent implements OnInit {
           console.log(this.employees);
         },
       });
-      this.filterdemployee = this.timeForm.controls[
-        'EmployeeNames'
-      ].valueChanges.pipe(
-        startWith(''),
-        map((value) => {
-          const name = typeof value === 'string' ? value : value?.name;
-
-          return name ? this._filter(name as string) : this.employees;
-        })
-      );
     }
   }
   confirm() {
@@ -107,16 +96,5 @@ export class manageattendenceComponent implements OnInit {
       }
       return null;
     };
-  }
-  displayFn(user: any): string {
-    return user && user.name ? user.name : '';
-  }
-
-  private _filter(name: string): any[] {
-    const filterValue = name.toLowerCase();
-
-    return this.employees.filter((employee: any) =>
-      employee.name.toLowerCase().includes(filterValue)
-    );
   }
 }
