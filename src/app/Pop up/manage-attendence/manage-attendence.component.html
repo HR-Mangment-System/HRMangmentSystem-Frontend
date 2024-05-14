@@ -27,10 +27,11 @@
               type="text"
               required=""
               [disabled]="Flag"
+              formControlName="employeeid"
             >
               <option
                 *ngFor="let employee of employees"
-                value="{{ employee.name }}"
+                value="{{ employee.nationalId }}"
               >
                 {{ employee.name }}
               </option>
@@ -95,6 +96,7 @@
               class="btn rounded-pill btn-primary"
               type="submit"
               [disabled]="timeForm.invalid"
+              [mat-dialog-close]
             >
               Confirm
             </button>

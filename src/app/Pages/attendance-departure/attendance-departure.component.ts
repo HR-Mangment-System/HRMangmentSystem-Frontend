@@ -30,7 +30,7 @@ export class AttendanceDepartureComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
-    public dialogRef: MatDialog, // Change this to MatDialog
+    public dialogRef: MatDialog,
     public AttendanceService: AttendanceService
   ) {
     this.myForm = this.fb.group(

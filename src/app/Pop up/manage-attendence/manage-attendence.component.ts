@@ -1,3 +1,4 @@
+import { EmployeeAttendence } from './../../interfaces/EmployeeAttendence';
 import { EmployeeService } from 'src/app/Service/employee.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import {
@@ -26,6 +27,12 @@ export class manageattendenceComponent implements OnInit {
   timeForm: FormGroup;
   Flag = true;
   employees: any;
+  employeeattend: EmployeeAttendence = {
+    employeeNationalId: '',
+    attendanceDate: '',
+    arrivalTime: '',
+    departureTime: '',
+  };
   constructor(
     private router: Router,
     private _snackBar: MatSnackBar,
@@ -39,51 +46,88 @@ export class manageattendenceComponent implements OnInit {
       {
         startTime: ['', Validators.required],
         endTime: ['', Validators.required],
-        EmployeeNames: ['', Validators.required],
+        employeeid: [],
       },
       { validator: this.timeOrderValidator() }
     );
   }
+
   ngOnInit(): void {
     if (this.data.report.employeeName == '') {
       this.Flag = false;
       this.EmployeeService.getEmployees().subscribe({
         next: (data: any) => {
           this.employees = data.data;
-          console.log(this.employees);
         },
       });
     }
   }
   confirm() {
-    this.data.report.arrivalTime = this.timeForm.controls['startTime'].value;
-    this.data.report.departureTime = this.timeForm.controls['endTime'].value;
-    this.AttendanceService.updateAttendence(this.data.report).subscribe({
-      next: (data: any) => {
-        if (data.length == 0)
+    if (this.data.report.employeeName == '') {
+      this.employeeattend.arrivalTime =
+        this.timeForm.controls['startTime'].value;
+      this.employeeattend.departureTime =
+        this.timeForm.controls['endTime'].value;
+      this.employeeattend.employeeNationalId =
+        this.timeForm.controls['employeeid'].value;
+      this.employeeattend.attendanceDate = this.getFormattedDate();
+      console.log(this.employeeattend);
+
+      this.AttendanceService.addAttendence(this.employeeattend).subscribe({
+        next: (data: any) => {
+          if (data.length == 0)
+            this._snackBar.open('No Content', 'X', {
+              horizontalPosition: 'end',
+              verticalPosition: 'top',
+              panelClass: ['red-snackbar', 'mt-5'],
+              duration: 2000,
+            });
+          else
+            this._snackBar.open('Added Successfully', 'X', {
+              horizontalPosition: 'end',
+              verticalPosition: 'top',
+              panelClass: ['green-snackbar', 'mt-5'],
+              duration: 2000,
+            });
+          this.router.navigate(['/attendance-departure']);
+        },
+        error: (error: any) => {
+          this._snackBar.open('No Content', 'X', {
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+          });
+        },
+      });
+    } else {
+      this.data.report.arrivalTime = this.timeForm.controls['startTime'].value;
+      this.data.report.departureTime = this.timeForm.controls['endTime'].value;
+      this.AttendanceService.updateAttendence(this.data.report).subscribe({
+        next: (data: any) => {
+          if (data.length == 0) {
+            this._snackBar.open('No Content', 'X', {
+              horizontalPosition: 'end',
+              verticalPosition: 'top',
+              panelClass: ['red-snackbar', 'mt-5'],
+              duration: 2000,
+            });
+          } else
+            this._snackBar.open('Edited Successfully', 'X', {
+              horizontalPosition: 'end',
+              verticalPosition: 'top',
+              panelClass: ['green-snackbar', 'mt-5'],
+              duration: 2000,
+            });
+        },
+        error: (error) => {
           this._snackBar.open('No Content', 'X', {
             horizontalPosition: 'end',
             verticalPosition: 'top',
             panelClass: ['red-snackbar', 'mt-5'],
             duration: 2000,
           });
-        else
-          this._snackBar.open('Edited Successfully', 'X', {
-            horizontalPosition: 'end',
-            verticalPosition: 'top',
-            panelClass: ['green-snackbar', 'mt-5'],
-            duration: 2000,
-          });
-      },
-      error: (error) => {
-        this._snackBar.open('No Content', 'X', {
-          horizontalPosition: 'end',
-          verticalPosition: 'top',
-          panelClass: ['red-snackbar', 'mt-5'],
-          duration: 2000,
-        });
-      },
-    });
+        },
+      });
+    }
   }
 
   timeOrderValidator(): ValidatorFn {
@@ -96,5 +140,14 @@ export class manageattendenceComponent implements OnInit {
       }
       return null;
     };
+  }
+  getFormattedDate(): string {
+    const today = new Date();
+
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const year = today.getFullYear();
+
+    return `${month}-${day}-${year}`;
   }
 }

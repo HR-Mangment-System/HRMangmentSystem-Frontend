@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { EmployeeAttendence } from '../interfaces/EmployeeAttendence';
 
 @Injectable({
   providedIn: 'root',
@@ -35,5 +36,8 @@ export class AttendanceService {
         '&ToDate=' +
         toDate
     );
+  }
+  addAttendence(data: EmployeeAttendence) {
+    return this.http.post(this.baseUrl + '/AddAttendanceReport', data);
   }
 }
