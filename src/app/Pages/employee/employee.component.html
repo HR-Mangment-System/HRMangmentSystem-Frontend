@@ -14,10 +14,16 @@
               name="name"
               required
               class="form-control"
+              #name="ngModel"
             />
+            <div *ngIf="name.invalid && (name.dirty || name.touched)">
+              <div class="text-danger" *ngIf="name.errors?.['required']">
+                Name is required.
+              </div>
+            </div>
           </div>
           <div class="form-group">
-            <label for="name">Email:</label>
+            <label for="email">Email:</label>
             <input
               type="email"
               id="email"
@@ -25,7 +31,16 @@
               name="email"
               required
               class="form-control"
+              #email="ngModel"
             />
+            <div *ngIf="email.invalid && (email.dirty || email.touched)">
+              <div class="text-danger" *ngIf="email.errors?.['required']">
+                Email is required.
+              </div>
+              <div class="text-danger" *ngIf="email.errors?.['email']">
+                Invalid email format.
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="address">Address:</label>
@@ -36,7 +51,13 @@
               name="address"
               required
               class="form-control"
+              #address="ngModel"
             />
+            <div *ngIf="address.invalid && (address.dirty || address.touched)">
+              <div class="text-danger" *ngIf="address.errors?.['required']">
+                Address is required.
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="phoneNumber">Phone Number:</label>
@@ -48,18 +69,13 @@
               required
               pattern="[0-9]{11}"
               class="form-control"
+              #phoneNumber="ngModel"
             />
-            <div
-              *ngIf="
-                employeeForm.controls['phoneNumber'].invalid &&
-                (employeeForm.controls['phoneNumber'].dirty ||
-                  employeeForm.controls['phoneNumber'].touched)
-              "
-            >
-              <div
-                class="text-danger"
-                *ngIf="employeeForm.controls['phoneNumber'].errors?.['pattern']"
-              >
+            <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)">
+              <div class="text-danger" *ngIf="phoneNumber.errors?.['required']">
+                Phone number is required.
+              </div>
+              <div class="text-danger" *ngIf="phoneNumber.errors?.['pattern']">
                 Phone number should contain 11 digits.
               </div>
             </div>
@@ -73,7 +89,13 @@
               name="dateOfBirth"
               required
               class="form-control"
+              #dateOfBirth="ngModel"
             />
+            <div *ngIf="dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)">
+              <div class="text-danger" *ngIf="dateOfBirth.errors?.['required']">
+                Date of Birth is required.
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="nationalID">National ID:</label>
@@ -85,18 +107,13 @@
               required
               pattern="[0-9]{14}"
               class="form-control"
+              #nationalID="ngModel"
             />
-            <div
-              *ngIf="
-                employeeForm.controls['nationalID'].invalid &&
-                (employeeForm.controls['nationalID'].dirty ||
-                  employeeForm.controls['nationalID'].touched)
-              "
-            >
-              <div
-                class="text-danger"
-                *ngIf="employeeForm.controls['nationalID'].errors?.['pattern']"
-              >
+            <div *ngIf="nationalID.invalid && (nationalID.dirty || nationalID.touched)">
+              <div class="text-danger" *ngIf="nationalID.errors?.['required']">
+                National ID is required.
+              </div>
+              <div class="text-danger" *ngIf="nationalID.errors?.['pattern']">
                 National ID should contain 14 digits.
               </div>
             </div>
@@ -110,7 +127,13 @@
               name="nationality"
               required
               class="form-control"
+              #nationality="ngModel"
             />
+            <div *ngIf="nationality.invalid && (nationality.dirty || nationality.touched)">
+              <div class="text-danger" *ngIf="nationality.errors?.['required']">
+                Nationality is required.
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -127,9 +150,13 @@
               required
               class="form-control"
               [min]="minContractDate"
+              #contractDate="ngModel"
             />
-            <div *ngIf="employeeForm.controls['contractDate'].invalid && (employeeForm.controls['contractDate'].dirty || employeeForm.controls['contractDate'].touched)">
-              <div class="text-danger" *ngIf="employeeForm.controls['contractDate'].errors?.['min']">
+            <div *ngIf="contractDate.invalid && (contractDate.dirty || contractDate.touched)">
+              <div class="text-danger" *ngIf="contractDate.errors?.['required']">
+                Contract date is required.
+              </div>
+              <div class="text-danger" *ngIf="contractDate.errors?.['min']">
                 Please enter a contract date after the year 2008.
               </div>
             </div>
@@ -143,7 +170,13 @@
               name="salary"
               required
               class="form-control"
+              #salary="ngModel"
             />
+            <div *ngIf="salary.invalid && (salary.dirty || salary.touched)">
+              <div class="text-danger" *ngIf="salary.errors?.['required']">
+                Salary is required.
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="attendanceTime">Attendance Time:</label>
@@ -154,7 +187,13 @@
               name="attendanceTime"
               required
               class="form-control"
+              #attendanceTime="ngModel"
             />
+            <div *ngIf="attendanceTime.invalid && (attendanceTime.dirty || attendanceTime.touched)">
+              <div class="text-danger" *ngIf="attendanceTime.errors?.['required']">
+                Attendance time is required.
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="departureTime">Departure Time:</label>
@@ -165,7 +204,13 @@
               name="departureTime"
               required
               class="form-control"
+              #departureTime="ngModel"
             />
+            <div *ngIf="departureTime.invalid && (departureTime.dirty || departureTime.touched)">
+              <div class="text-danger" *ngIf="departureTime.errors?.['required']">
+                Departure time is required.
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="gender">Gender:</label>
@@ -175,34 +220,38 @@
               name="gender"
               required
               class="form-control"
+              #gender="ngModel"
             >
               <option value="f">Female</option>
               <option value="m">Male</option>
             </select>
+            <div *ngIf="gender.invalid && (gender.dirty || gender.touched)">
+              <div class="text-danger" *ngIf="gender.errors?.['required']">
+                Gender is required.
+              </div>
+            </div>
           </div>
           <div class="form-group">
-            <label for="salary">Department ID:</label>
-            <input
-              type="number"
+            <label for="departmentId">Department:</label>
+            <select
               id="departmentId"
               [(ngModel)]="employee.departmentId"
               name="departmentId"
               required
               class="form-control"
-            />
-          </div>
-          <div class="form-group">
-            <div class="form-group">
-              <label for="isDeleted">Is Deleted:</label>
-              <input
-                type="checkbox"
-                id="isDeleted"
-                [(ngModel)]="employee.isDeleted"
-                name="isDeleted"
-                class="form-check-input"
-              />
+              #departmentId="ngModel"
+            >
+              <option *ngFor="let department of departments" [value]="department.id">
+                {{ department.name }}
+              </option>
+            </select>
+            <div *ngIf="departmentId.invalid && (departmentId.dirty || departmentId.touched)">
+              <div class="text-danger" *ngIf="departmentId.errors?.['required']">
+                Department is required.
+              </div>
             </div>
           </div>
+
           <div class="message">
             <div class="alert alert-success" *ngIf="message">
               <p>{{ message }}</p>

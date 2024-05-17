@@ -15,7 +15,7 @@ export class EmployeeService {
     'Content-Type': 'application/json',
   });
   options = { headers: this.headers };
-  apiURL = 'http://localhost:5023/api/Employees/';
+  apiURL = 'https://localhost:44337/api/Employees/';
 
   addEmp(emp: Employee) {
     return this.http.post(this.apiURL + 'AddEmployee', emp, this.options);
