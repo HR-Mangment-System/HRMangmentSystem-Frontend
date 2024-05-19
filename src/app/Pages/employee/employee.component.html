@@ -1,8 +1,8 @@
 <div class="container">
   <h2 class="text-center mb-4"><strong>Employee Data Entry</strong></h2>
-  <form #employeeForm="ngForm" (ngSubmit)="addEmp()">
+  <form #employeeForm="ngForm" (ngSubmit)="addOrUpdateEmp()">
     <div class="row">
-      <div class="col-lg-6 col-6">
+      <div class="col-lg-6 col-12">
         <div class="personal-info">
           <h3><strong>Personal Information</strong></h3>
           <div class="form-group">
@@ -137,7 +137,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-6 col-6">
+      <div class="col-lg-6 col-12">
         <div class="work-related-info">
           <h3><strong>Work-Related Information</strong></h3>
           <div class="form-group">
@@ -263,30 +263,57 @@
             </div>
           </div>
           <div class="buttons mt-4 d-flex justify-content-center">
-            <button
-              type="submit"
-              [disabled]="employeeForm.invalid"
-              class="btn btn-success"
-            >
-              Save
+            <button class="btn btn-success" type="submit">
+              {{ isEditMode ? 'Update' : 'Add' }} Employee
             </button>
-            <button
-              type="button"
-              (click)="updateEmp()"
-              class="btn btn-secondary"
-            >
-              Edit
-            </button>
-            <button
-              type="button"
-              (click)="deleteEmp(employee.nationalId)"
-              class="btn btn-danger"
-            >
-              Delete
-            </button>
+            <button class="btn btn-danger" type="button" (click)="resetForm()">Cancel</button>
           </div>
         </div>
       </div>
     </div>
   </form>
+  <div class="col-md-12 mt-4">
+    <h3><strong>Employee List</strong></h3>
+    <table class="table table-bordered table-striped mt-2">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>Date of Birth</th>
+          <th>National ID</th>
+          <th>Nationality</th>
+          <th>Hire Date</th>
+          <th>Salary</th>
+          <th>Attendance Time</th>
+          <th>Departure Time</th>
+          <th>Gender</th>
+          <th>Department</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of employees">
+          <td>{{ emp.name }}</td>
+          <td>{{ emp.email }}</td>
+          <td>{{ emp.address }}</td>
+          <td>{{ emp.phone }}</td>
+          <td>{{ emp.dateOfBirth }}</td>
+          <td>{{ emp.nationalId }}</td>
+          <td>{{ emp.nationality }}</td>
+          <td>{{ emp.hireDate }}</td>
+          <td>{{ emp.salary }}</td>
+          <td>{{ emp.attendanceTime }}</td>
+          <td>{{ emp.departureTime }}</td>
+          <td>{{ emp.gender === 'm' ? 'Male' : 'Female' }}</td>
+          <td>{{ emp.departmentName }}</td>
+          <td>
+            <button class="btn btn-sm btn-outline-primary" (click)="editEmp(emp)">Edit</button>
+            <button class="btn btn-sm btn-outline-danger" (click)="deleteEmp(emp.nationalId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

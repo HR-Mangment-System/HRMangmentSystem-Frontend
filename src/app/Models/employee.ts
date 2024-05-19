@@ -13,4 +13,5 @@ export interface Employee {
   departureTime: string;
   isDeleted: boolean;
   departmentId: number;
+  departmentName: string;
 }
