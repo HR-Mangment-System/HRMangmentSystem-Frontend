@@ -98,10 +98,13 @@ export class EmployeeComponent implements OnInit {
       (response: any) => {
         if (response.succeeded) {
           console.log('Employee edited successfully:', response);
-          this.message = response.message;
+          this.message = 'Updated successfully';
           this.loadInitialData();
           this.resetForm();
           this.isEditMode = false;
+          setTimeout(() => {
+            this.message = ''; // Clear message after 3 seconds
+          }, 3000);
         } else {
           this.errMes = response.message || 'Employee Edition Failed!';
         }
@@ -112,6 +115,7 @@ export class EmployeeComponent implements OnInit {
       }
     );
   }
+
 
   deleteEmp(nationalId: string): void {
     if (confirm('Are you sure you want to delete this employee?')) {
