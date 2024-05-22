@@ -52,7 +52,7 @@ export class AnnualHolidaysComponent implements OnInit{
       this.Holidays = res.data; 
       console.log('Holidays after GetHolidays:', this.Holidays);
     }, error => {
-      console.error('Error fetching holidays:', error);
+      this.Holidays = [];
     });
   }
 
@@ -60,48 +60,28 @@ export class AnnualHolidaysComponent implements OnInit{
   // Post
   createHoliday(){
     this.holidayService.createHoliday(this.Holiday.holidayName, this.Holiday.holidayDate).subscribe((res: any) => {
-      //this.GetHolidays();
-      //this.router.navigate(['/annual-holidays']);
       console.log('Holiday created:', res);
+      this.GetHolidays();
     }, error => {
       console.error('Error creating holiday:', error);
     });
     this.formHoliday.reset();
-    this.router.navigate(['/annual-holidays']);
+    
   }
   // delete
   deleteHoliday(holidayId: number){
     this.holidayService.deleteHoliday(holidayId).subscribe((res: any) => {
-      //this.GetHolidays();
-      this.Holidays= this.Holidays.filter(
-        (x: any) => x.holidayId !== holidayId
-      ); 
+      this.GetHolidays();
+    
     }, error => {
       console.error('Error deleting holiday:', error);
     });
-    this.router.navigate(['/annual-holidays']);
+    
+    
   }
 
-  //put
-  // updateHoliday(holiday: Holiday) {
-  //   this.holidayService.updateHoliday(holiday)
-  //     .subscribe((updatedHoliday: Holiday) => {
-  //       console.log('Holiday updated:', updatedHoliday);
-  //       const index = this.Holidays.findIndex((h: { id: number }) => h.id === holiday.id);
-  //       this.Holidays[index] = updatedHoliday;
-  //       this.formHoliday.reset();  
-  //     }, error => {
-  //       console.error('Error updating holiday:', error);
-  //     });
-  // }
-  
-  // editHoliday(holiday: Holiday) {
-  //   this.selectedHoliday = holiday;
-  //   this.formHoliday.patchValue({
-  //     holidayName: holiday.holidayName,
-  //     holidayDate: holiday.holidayDate
-  //   });
-  // }
+
+  // update
 
   setUpdate(data:any){
     this.Holiday.holidayName = data.holidayName;
@@ -116,6 +96,7 @@ export class AnnualHolidaysComponent implements OnInit{
       "id": this.Holiday.id
     };
     this.holidayService.updateHoliday(bodydata).subscribe((res: any) => {
+      this.GetHolidays();
       console.log('Holiday updated:', res);
     }, error => {
       console.error('Error updating holiday:', error);

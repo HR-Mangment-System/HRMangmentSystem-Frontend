@@ -50,19 +50,22 @@
             <div class="table-container" style="max-height: 200px; overflow-y: auto;">
                 <table class="table">
                     <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Date</th>
-                            <th>Actions</th>
+                        <tr >
+                            
+                            <th     
+                        >Name</th>
+                            <th    
+                         >Date</th>
+                            <th     
+                          >Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let h of Holidays ">
-                            <td>{{h.id}}</td>
-                            <td>{{h.holidayName}}</td>
-                            <td>{{h.holidayDate}}</td>
-                            <td>
+                            
+                            <td >{{h.holidayName}}</td>
+                            <td >{{h.holidayDate}}</td>
+                            <td >
                             <button class="btn btn-sm btn-outline-primary">
                                 <span class="bi bi-pencil" (click)="setUpdate(h)" ></span>
                             </button>
