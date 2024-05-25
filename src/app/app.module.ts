@@ -24,6 +24,7 @@ import { SettingComponent } from './Components/setting/setting.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AsyncPipe } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { AsyncPipe } from '@angular/common';
     MatSelectModule,
     MatAutocompleteModule,
     AsyncPipe,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

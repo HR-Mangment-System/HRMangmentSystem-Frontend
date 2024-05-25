@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Department } from '../Models/department';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,14 @@ export class EmployeeDepartmentService {
 
   getDepartmentById(id: number): Observable<any> {
     return this._httpsClient.get<any>(this.baseUrl + 'GetDepartmentById/' + id);
+  }
+
+  addDepartment(department: Department): Observable<any> {
+    return this._httpsClient.post<any>(this.baseUrl + 'CreateDepartment', department);
+  }
+
+  updateDepartment(department: Department): Observable<any> {
+    return this._httpsClient.put<any>(this.baseUrl + 'UpdateDepartment', department);
   }
 
   deleteDepartment(id: number): Observable<any> {
