@@ -13,11 +13,11 @@
                   <div class="card-body">
                       <div class="search-bar mb-3">
                         <div class="input-group input-group-sm mb-3 w-50">
-                          <input type="text" class="form-control" placeholder="Search by employee name">
+                          <input type="text" class="form-control" placeholder="Search by employee name" #employeeNameInput>
                           <input type="month" class="form-control" #dateInput>
-                          <button class="btn btn-primary" (click)="showFormattedDate(dateInput.value)">Show</button>
+                          <button class="btn btn-primary" (click)="showFormattedDate()">Show</button>
                       </div>
-                      <div class="table-responsive ">
+                      <div class="table-responsive">
                           <table class="table table-bordered">
                               <thead>
                                   <tr>
@@ -35,30 +35,28 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                  <tr>
-                                      <td>John Doe</td>
-                                      <td>IT</td>
-                                      <td>$5000</td>
-                                      <td>20</td>
-                                      <td>2</td>
-                                      <td>$200</td>
-                                      <td>$50</td>
-                                      <td>$250</td>
-                                      <td>$100</td>
-                                      <td>$4150</td>
+                                  <tr *ngFor="let employee of employeeSalaries">
+                                      <td>{{ employee.employeeName }}</td>
+                                      <td>{{ employee.departmentName }}</td>
+                                      <td>{{ employee.baseSalary | currency }}</td>
+                                      <td>{{ employee.totalAttendanceDays }}</td>
+                                      <td>{{ employee.totalAbsentDays }}</td>
+                                      <td>{{ employee.totalOvertimeHours }}</td>
+                                      <td>{{ employee.penalityHours }}</td>
+                                      <td>{{ employee.totalBounus | currency }}</td>
+                                      <td>{{ employee.totalPenality | currency }}</td>
+                                      <td>{{ employee.totalSalary | currency }}</td>
                                       <td>
                                         <div class="operation-icons d-flex align-items-center">
                                           <a href="#" class="btn btn-link operation-icon mr-3">
-                                            <i class="text-dark ri-lg ri-file-ppt-fill"></i> <!-- ri-lg for smaller size, text-muted for gray color -->
+                                            <i class="text-dark ri-lg ri-file-ppt-fill"></i>
                                           </a>
                                           <a href="#" class="btn btn-link operation-icon">
-                                              <i class="ri-printer-line ri-lg text-muted"></i> <!-- ri-lg for smaller size, text-muted for gray color -->
+                                              <i class="ri-printer-line ri-lg text-muted"></i>
                                           </a>
                                       </div>
-
                                       </td>
                                   </tr>
-                                  <!-- Add more static rows here if needed -->
                               </tbody>
                           </table>
                       </div>
