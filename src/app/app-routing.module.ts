@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'annual-holidays', component: AnnualHolidaysComponent },
   {path: 'department', component: DepartmentsComponent},
   { path: 'general-settings', component: SettingComponent },
+  {path: 'signin', component: SigninComponent},
   {path: '**', component: NotFoundComponent}
 ];
 
