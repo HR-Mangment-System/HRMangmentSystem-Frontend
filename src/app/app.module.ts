@@ -25,6 +25,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AsyncPipe } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HomeComponent } from './Pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DepartmentsComponent,
     AttendanceDepartureComponent,
     SettingComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

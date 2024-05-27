@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HolidayService {
-  baseUrl = 'https://localhost:7109/api/AnnualHolidays'; // API URL 
+  baseUrl = 'https://localhost:44337/api/AnnualHolidays'; // API URL 
   constructor(private http: HttpClient) { }
   
   GetHolidays(){

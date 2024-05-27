@@ -10,19 +10,24 @@ import { AnnualHolidaysComponent } from './Pages/annual-holidays/annual-holidays
 import { NotFoundComponent } from './Pages/not-found/not-found.component';
 import { DepartmentsComponent } from './Pages/departments/departments.component';
 import { SettingComponent } from './Components/setting/setting.component';
+import { AuthGaurdService } from './Service/auth-gaurd.service';
+import { RoleGuardService } from './Service/role-guard.service';
+import { PreventLoginService } from './Service/prevent-login.service';
+import { HomeComponent } from './Pages/home/home.component';
 
 const routes: Routes = [
-  { path: '', component: AttendanceDepartureComponent },
-  { path: 'users-groups', component: UsersGroupsComponent },
-  { path: 'user-register', component: UserRegisterComponent },
-  { path: 'employee', component: EmployeeComponent },
-  { path: 'attendance-departure', component: AttendanceDepartureComponent },
-  { path: 'employee-salary', component: EmployeeSalaryComponent },
-  { path: 'annual-holidays', component: AnnualHolidaysComponent },
-  {path: 'department', component: DepartmentsComponent},
-  { path: 'general-settings', component: SettingComponent },
-  {path: 'signin', component: SigninComponent},
-  {path: '**', component: NotFoundComponent}
+  {path:'', component: HomeComponent,canActivate: [AuthGaurdService]},
+  { path: 'employee', component: EmployeeComponent, canActivate: [AuthGaurdService,RoleGuardService],data: { expectedRole: ['SuperAdmin','Employees.Read']} },
+  { path: 'signin', component: SigninComponent ,canActivate:[PreventLoginService]},
+  { path: 'users-groups', component: UsersGroupsComponent, canActivate: [AuthGaurdService, RoleGuardService], data: { expectedRole: ['SuperAdmin']} },
+  { path: 'user-register', component: UserRegisterComponent, canActivate: [AuthGaurdService, RoleGuardService], data: { expectedRole: ['SuperAdmin'] } },
+  
+  { path: 'attendance-departure', component: AttendanceDepartureComponent, canActivate: [AuthGaurdService,RoleGuardService], data: { expectedRole: ['SuperAdmin','Attendance.Read'] } },
+  { path: 'employee-salary', component: EmployeeSalaryComponent, canActivate: [AuthGaurdService,RoleGuardService] ,data: { expectedRole: ['SuperAdmin','Salaries.Read']} },
+  { path: 'annual-holidays', component: AnnualHolidaysComponent, canActivate: [AuthGaurdService,RoleGuardService],data: { expectedRole: ['SuperAdmin','Settings.Read']} },
+  { path: 'department', component: DepartmentsComponent, canActivate: [AuthGaurdService,RoleGuardService],data: { expectedRole: ['SuperAdmin']} },
+  { path: 'general-settings', component: SettingComponent, canActivate: [AuthGaurdService,RoleGuardService],data: { expectedRole: ['SuperAdmin','Settings.Read']} },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

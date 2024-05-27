@@ -8,7 +8,7 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root',
 })
 export class UsersService {
-  baseUrl: string = 'https://localhost:44337/api/Account/';
+  baseUrl: string = 'https://localhost:7109/api/Account/';
 
   constructor(public http: HttpClient) {}
 
@@ -20,7 +20,7 @@ export class UsersService {
     userID: '',
     userEmail: '',
     userFullName: '',
-    userRole: '',
+    UserRole: [''],
     userName: '',
   };
 
@@ -31,12 +31,14 @@ export class UsersService {
       this.loggedinUser.userID = userToken.userID;
       this.loggedinUser.userEmail = userToken.userEmail;
       this.loggedinUser.userFullName = userToken.userFullName;
-      this.loggedinUser.userRole = userToken.userRole;
+      this.loggedinUser.UserRole = userToken.UserRole;
       this.loggedinUser.userName = userToken.userName;
+      console.log(this.loggedinUser);
     }
   }
 
   isUserLoggedIn(): boolean {
+    this.retreiveTokenData();
     return this.loggedinUser.userID === '' ? false : true;
   }
 
@@ -46,8 +48,13 @@ export class UsersService {
       userID: '',
       userEmail: '',
       userFullName: '',
-      userRole: '',
+      UserRole: [''],
       userName: '',
     };
+  }hasRole(roles: string[]): boolean {
+    this.retreiveTokenData();
+    return roles.some(role => this.loggedinUser.UserRole.includes(role));
   }
+  
+  
 }

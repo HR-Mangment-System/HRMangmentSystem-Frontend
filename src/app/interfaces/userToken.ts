@@ -3,5 +3,5 @@ export interface userToken {
   userEmail: string;
   userName: string;
   userFullName: string;
-  userRole: string;
+  UserRole: string[];
 }
