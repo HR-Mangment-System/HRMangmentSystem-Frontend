@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Settings } from 'src/app/Models/settings';
 import { SettingService } from 'src/app/Service/setting.service';
 
@@ -19,17 +20,35 @@ export class SettingComponent {
     'Saturday',
     'Sunday',
   ];
-  constructor(private settingService: SettingService) {}
+  constructor(
+    private settingService: SettingService,
+    private _snackBar: MatSnackBar
+  ) {}
+  Change() {
+    if (this.settings.bonusRate < 0) {
+      this.settings.bonusRate = 0;
+    } else if (this.settings.penaltyRate < 0) {
+      this.settings.penaltyRate = 0;
+    }
+  }
 
   createSettings() {
-    this.settingService.creatSet(this.settings).subscribe(
+    this.settingService.updateSet(this.settings).subscribe(
       (response) => {
-        console.log('Settings created successfully:', response);
-        this.message = 'Settings Created Successfully!';
+        this._snackBar.open('Added Successfully', 'X', {
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: ['green-snackbar', 'mt-5'],
+          duration: 2000,
+        });
       },
       (error) => {
-        console.error('Error creating settings:', error);
-        this.message = 'Error Creating Settings!';
+        this._snackBar.open('Error Setting settings', 'X', {
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: ['red-snackbar', 'mt-5'],
+          duration: 2000,
+        });
       }
     );
   }

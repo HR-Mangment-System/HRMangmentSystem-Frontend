@@ -92,7 +92,6 @@ export class manageattendenceComponent implements OnInit {
           this.router.navigate(['/attendance-departure']);
         },
         error: (error: any) => {
-          console.log(error);
           this._snackBar.open('No Content', 'X', {
             horizontalPosition: 'end',
             verticalPosition: 'top',

@@ -5,14 +5,16 @@ import { Router } from '@angular/router';
 import { EmployeeDepartmentService } from './../../Service/employee-department.service';
 import { AlertComponent } from 'src/app/Pop up/alert/alert.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-departments',
   templateUrl: './departments.component.html',
-  styleUrls: ['./departments.component.css']
+  styleUrls: ['./departments.component.css'],
 })
 export class DepartmentsComponent implements OnInit {
-  @ViewChild('addEditDepartmentModal') addEditDepartmentModal!: TemplateRef<any>;
+  @ViewChild('addEditDepartmentModal')
+  addEditDepartmentModal!: TemplateRef<any>;
   employeeDepts: any[] = [];
   departmentForm!: FormGroup;
   selectedDepartment: any = null;
@@ -22,13 +24,14 @@ export class DepartmentsComponent implements OnInit {
     private _empDepartments: EmployeeDepartmentService,
     private dialog: MatDialog,
     private modalService: NgbModal,
-    private router: Router
-  ) { }
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.loadDepartments();
     this.departmentForm = this.fb.group({
-      name: ['', Validators.required]
+      name: ['', Validators.required],
     });
   }
 
@@ -39,7 +42,7 @@ export class DepartmentsComponent implements OnInit {
       },
       error: (error) => {
         console.log(error);
-      }
+      },
     });
   }
 
@@ -61,52 +64,60 @@ export class DepartmentsComponent implements OnInit {
     const departmentData = {
       ...this.departmentForm.value,
       id: this.selectedDepartment ? this.selectedDepartment.id : 0,
-      isDeleted: false
+      isDeleted: false,
     };
 
     if (this.selectedDepartment) {
       this._empDepartments.updateDepartment(departmentData).subscribe({
         next: () => {
+          this.snackBar.open('Updated Successfully', 'X', {
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: ['green-snackbar', 'mt-5'],
+            duration: 2000,
+          });
           this.modalService.dismissAll();
           this.loadDepartments();
         },
         error: (error) => {
-          console.log('Error updating department:', error);
-        }
+          this.snackBar.open('Error Updating Department', 'X', {
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: ['red-snackbar', 'mt-5'],
+            duration: 2000,
+          });
+        },
       });
     } else {
       this._empDepartments.addDepartment(departmentData).subscribe({
         next: () => {
+          this.snackBar.open('Added Successfully', 'X', {
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: ['green-snackbar', 'mt-5'],
+            duration: 2000,
+          });
           this.modalService.dismissAll();
           this.loadDepartments();
         },
         error: (error) => {
-          console.log('Error adding department:', error);
-        }
+          this.snackBar.open('Error Adding Department', 'X', {
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: ['red-snackbar', 'mt-5'],
+            duration: 2000,
+          });
+        },
       });
     }
   }
 
   confirmDeleteDepartment(id: number): void {
     const dialogRef = this.dialog.open(AlertComponent, {
-      data: { id: id, alerttype: 'delete', entityType: 'department' }
+      data: { id: id, alerttype: 'delete', entityType: 'department' },
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.deleteDepartment(id);
-      }
-    });
-  }
-
-  deleteDepartment(id: number): void {
-    this._empDepartments.deleteDepartment(id).subscribe({
-      next: () => {
-        this.loadDepartments();
-      },
-      error: (error) => {
-        console.log('Error deleting department:', error);
-      }
+    dialogRef.afterClosed().subscribe((result) => {
+      this.ngOnInit();
     });
   }
 }
