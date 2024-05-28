@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsersGroupsService } from 'src/app/Service/users-groups.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { UsersGroupsService } from 'src/app/Service/users-groups.service';
 })
 export class UsersGroupsComponent {
 
-  constructor(private groupService: UsersGroupsService) { }
+  constructor(private groupService: UsersGroupsService, private snackBar: MatSnackBar) { }
 
   pages: Page[] = [
     { name: 'Attendance', create: false, read: false, update: false, delete: false },
@@ -18,46 +19,27 @@ export class UsersGroupsComponent {
     { name: 'Settings', create: false, read: false, update: false, delete: false },
   ];
 
-  form = new FormGroup({
-    name: new FormControl('', [
-      Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(20)
-    ]),
-    permissions: new FormArray([
-      new FormGroup({
-        name: new FormControl('Attendance'),
-        create: new FormControl(false),
-        read: new FormControl(false),
-        update: new FormControl(false),
-        delete: new FormControl(false),
-      }),
-      new FormGroup({
-        name: new FormControl('Employees'),
-        create: new FormControl(false),
-        read: new FormControl(false),
-        update: new FormControl(false),
-        delete: new FormControl(false),
-      }),
-      new FormGroup({
-        name: new FormControl('Salaries'),
-        create: new FormControl(false),
-        read: new FormControl(false),
-        update: new FormControl(false),
-        delete: new FormControl(false),
-      }),
-      new FormGroup({
-        name: new FormControl('Settings'),
-        create: new FormControl(false),
-        read: new FormControl(false),
-        update: new FormControl(false),
-        delete: new FormControl(false),
-      }),
-    ]),
-  });
+  form = this.createForm();
+
+  createForm(): FormGroup {
+    return new FormGroup({
+      name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(20)
+      ]),
+      permissions: new FormArray(this.pages.map(page => new FormGroup({
+        name: new FormControl(page.name),
+        create: new FormControl(page.create),
+        read: new FormControl(page.read),
+        update: new FormControl(page.update),
+        delete: new FormControl(page.delete),
+      }))),
+    });
+  }
 
   get getName(): any {
-    return this.form.controls.name;
+    return this.form.controls['name'];
   }
 
   get getPermissions(): FormArray {
@@ -67,11 +49,18 @@ export class UsersGroupsComponent {
   setPermissions(event: any, index: number, controlName: string): void {
     const permission = this.getPermissions.controls[index];
     permission.get(controlName)?.setValue(event.target.checked);
+
+    if ((controlName === 'create' || controlName === 'update' || controlName === 'delete') && event.target.checked) {
+      permission.get('read')?.setValue(true);
+    }
   }
+
   ischanged: boolean = false;
 
   onSubmit(): void {
     console.log(this.form.value);
+    this.ischanged = false;
+
     for (let i = 0; i < this.getPermissions.length; i++) {
       if (this.getPermissions.controls[i].value.create || this.getPermissions.controls[i].value.read || this.getPermissions.controls[i].value.update || this.getPermissions.controls[i].value.delete) {
         this.ischanged = true;
@@ -79,18 +68,26 @@ export class UsersGroupsComponent {
       }
     }
 
-    if (this.form.controls.name.valid && this.ischanged) {
+    if (this.form.controls['name'].valid && this.ischanged) {
       this.groupService.createGroup(this.form.value).subscribe({
         next: (data) => {
           console.log(data);
+          this.snackBar.open('User group created successfully!', 'Close', { duration: 3000 });
+          this.form.reset();
+          this.resetForm();
         },
         error: (error) => {
           console.error(error);
+          this.snackBar.open('Failed to create user group.', 'Close', { duration: 3000 });
         }
       });
     } else {
-      (this.form.controls.name.invalid) ? this.form.controls.name.markAsDirty():this.form.controls.permissions.setErrors({ invalid: true });
+      (this.form.controls['name'].invalid) ? this.form.controls['name'].markAsDirty() : this.form.controls['permissions'].setErrors({ invalid: true });
     }
+  }
+
+  private resetForm(): void {
+    this.form = this.createForm();
   }
 }
 

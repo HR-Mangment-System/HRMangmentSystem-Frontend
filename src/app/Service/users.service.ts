@@ -8,7 +8,7 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root',
 })
 export class UsersService {
-  baseUrl: string = 'https://localhost:7109/api/Account/';
+  baseUrl: string = 'https://localhost:44337/api/Account/';
 
   constructor(public http: HttpClient) {}
 
