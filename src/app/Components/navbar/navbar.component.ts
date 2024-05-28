@@ -9,7 +9,7 @@ import { UsersService } from 'src/app/Service/users.service';
 })
 export class NavbarComponent implements OnInit  {
   username: string = '';
-  constructor( private usersService: UsersService,private router:Router){}
+  constructor( public usersService: UsersService,private router:Router){}
   ngOnInit(): void {
     this.usersService.retreiveTokenData();
     this.username = this.usersService.loggedinUser.userFullName;

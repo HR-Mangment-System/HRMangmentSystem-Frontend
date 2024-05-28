@@ -76,7 +76,7 @@
     <nav class="navbar navbar-expand-lg ">
       <div class="collapse navbar-collapse " id="topnav-menu-content">
         <ul class="navbar-nav ">
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" *ngIf="usersService.hasRole(['SuperAdmin'])">
             <a
               class="nav-link"
               routerLink="/users-groups"
@@ -89,7 +89,7 @@
               <i class="ri-folder-user-fill"></i>Users Groups
             </a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" *ngIf="usersService.hasRole(['Employees.Read','SuperAdmin'])">
             <a
               class="nav-link"
               routerLink="/employee"
@@ -102,7 +102,7 @@
               <i class="ri-user-add-fill"></i>Employees
             </a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" *ngIf="usersService.hasRole(['SuperAdmin'])">
             <a
               class="nav-link"
               routerLink="department"
@@ -115,7 +115,7 @@
               <i class="uil-subject"></i>Departments
             </a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" *ngIf="usersService.hasRole(['SuperAdmin'])">
             <a
               class="nav-link"
               routerLink="user-register"
@@ -128,7 +128,7 @@
               <i class="uil-user"></i>Add User
             </a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" *ngIf="usersService.hasRole(['SuperAdmin','Settings.Read'])">
             <a
               class="nav-link"
               routerLink="annual-holidays"
@@ -141,7 +141,7 @@
               <i class="uil-coffee"></i>annual holidays
             </a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" *ngIf="usersService.hasRole(['SuperAdmin','Settings.Read'])">
             <a
               class="nav-link"
               routerLink="general-settings"
@@ -154,7 +154,7 @@
               <i class="uil-edit"></i>Settings
             </a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" *ngIf="usersService.hasRole(['SuperAdmin','Attendance.Read'])">
             <a
               class="nav-link"
               routerLink="attendance-departure"
@@ -167,7 +167,7 @@
               <i class="uil-ticket"></i>Attendance 
             </a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown"*ngIf="usersService.hasRole(['SuperAdmin','Salaries.Read'])">
             <a
               class="nav-link"
               routerLink="employee-salary"
