@@ -43,7 +43,7 @@
             [(ngModel)]="settings.weeklyHoliday1"
             name="weeklyHoliday1"
             required
-            class="form-control"
+            class="form-select"
           >
             <option *ngFor="let day of daysOfWeek" [value]="day">
               {{ day }}
@@ -57,7 +57,7 @@
             [(ngModel)]="settings.weeklyHoliday2"
             name="weeklyHoliday2"
             required
-            class="form-control"
+            class="form-select"
           >
             <option *ngFor="let day of daysOfWeek" [value]="day">
               {{ day }}

@@ -84,7 +84,7 @@
                 <button
                   [disabled]="myForm.invalid"
                   type="submit"
-                  class="btn btn-soft-dark mt-3"
+                  class="btn btn-soft-dark mt-3 w-100"
                   (click)="search()"
                 >
                   Show
@@ -93,7 +93,7 @@
               <div class="mb-3 col-2">
                 <button
                   type="submit"
-                  class="btn btn-soft-dark mt-3"
+                  class="btn btn-soft-dark mt-3 w-100"
                   (click)="reset()"
                 >
                   reset
@@ -102,13 +102,6 @@
             </form>
           </div>
           <div class="col-md-4 mt-1">
-            <a
-              class="action-icon mt-2 d-inline-block ms-2 me-5 float-end print"
-              printSectionId="content"
-              ngxPrint
-            >
-              <i class="font-36 ri-printer-line"></i
-            ></a>
             <a
               class="action-icon mt-2 d-inline-block ms-2 float-end print"
               (click)="SavePDF()"
@@ -124,7 +117,6 @@
         >
           <thead>
             <tr>
-              <th>ID</th>
               <th>Department</th>
               <th>Employee</th>
               <th>Attendance</th>
@@ -135,23 +127,25 @@
           </thead>
           <tbody>
             <tr *ngFor="let data of attendancereport.data">
-              <td class="table-user">{{ data.id }}</td>
               <td>{{ data.departmentName }}</td>
               <td>{{ data.employeeName }}</td>
               <td>{{ data.arrivalTime }}</td>
               <td>{{ data.departureTime }}</td>
               <td>{{ data.attendanceDate }}</td>
               <td class="table-action">
-                <a (click)="edit(data)" class="action-icon">
-                  <i class="mdi mdi-pencil"></i
+                <a
+                  (click)="edit(data)"
+                  class="btn btn-sm btn-outline-primary mx-1"
+                >
+                  <i class="bi bi-pencil"></i
                 ></a>
                 <a
                   (click)="delete(data.id)"
-                  class="action-icon"
+                  class="btn btn-sm btn-outline-danger mx-1"
                   data-bs-toggle="modal"
                   data-bs-target="#centermodal"
                 >
-                  <i class="mdi mdi-delete"></i
+                  <i class="bi bi-trash"></i
                 ></a>
               </td>
             </tr>
