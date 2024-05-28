@@ -41,6 +41,7 @@ export class UsersService {
     this.retreiveTokenData();
     return this.loggedinUser.userID === '' ? false : true;
   }
+  
 
   logoutUser() {
     localStorage.removeItem('UserToken');
