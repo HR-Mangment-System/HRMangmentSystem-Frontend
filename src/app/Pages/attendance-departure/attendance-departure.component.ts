@@ -112,8 +112,11 @@ export class AttendanceDepartureComponent implements OnInit {
   }
 
   edit(data: any) {
-    this.dialogRef.open(manageattendenceComponent, {
+    const dialog = this.dialogRef.open(manageattendenceComponent, {
       data: { report: data },
+    });
+    dialog.afterClosed().subscribe((result) => {
+      this.ngOnInit();
     });
   }
   dateValidator(group: FormGroup) {
@@ -180,7 +183,7 @@ export class AttendanceDepartureComponent implements OnInit {
     });
   }
   add() {
-    this.dialogRef.open(manageattendenceComponent, {
+    const dialog = this.dialogRef.open(manageattendenceComponent, {
       data: {
         report: {
           departmentName: '',
@@ -190,6 +193,9 @@ export class AttendanceDepartureComponent implements OnInit {
           date: '',
         },
       },
+    });
+    dialog.afterClosed().subscribe((result) => {
+      this.ngOnInit();
     });
   }
 }

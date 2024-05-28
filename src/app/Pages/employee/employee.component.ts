@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Employee } from './../../Models/employee';
 import { EmployeeService } from 'src/app/Service/employee.service';
 import { EmployeeDepartmentService } from 'src/app/Service/employee-department.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-employee',
@@ -17,7 +18,11 @@ export class EmployeeComponent implements OnInit {
   employee: Employee = this.getEmptyEmployee();
   isEditMode: boolean = false;
 
-  constructor(private empSer: EmployeeService, private empDepSer: EmployeeDepartmentService) {}
+  constructor(
+    private empSer: EmployeeService,
+    private empDepSer: EmployeeDepartmentService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.loadInitialData();
@@ -33,7 +38,11 @@ export class EmployeeComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this.empDepSer.getDepartments().subscribe(
         (response: any) => {
-          if (response.succeeded && response.data && Array.isArray(response.data)) {
+          if (
+            response.succeeded &&
+            response.data &&
+            Array.isArray(response.data)
+          ) {
             this.departments = response.data;
             console.log('Departments fetched successfully:', this.departments);
             resolve();
@@ -74,17 +83,31 @@ export class EmployeeComponent implements OnInit {
     this.empSer.addEmp(this.employee).subscribe(
       (response: any) => {
         if (response.succeeded) {
-          console.log('Employee added successfully:', response);
+          this.snackBar.open('Added Successfully', 'X', {
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: ['green-snackbar', 'mt-5'],
+            duration: 2000,
+          });
           this.message = response.message;
           this.loadInitialData();
           this.resetForm();
         } else {
-          this.errMes = response.message || 'Employee Addition Failed!';
+          this.snackBar.open('Error Adding Employee', 'X', {
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: ['red-snackbar', 'mt-5'],
+            duration: 2000,
+          });
         }
       },
       (error) => {
-        console.error('Error adding employee:', error);
-        this.errMes = 'Employee Addition Failed!';
+        this.snackBar.open('Error Adding Employee', 'X', {
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: ['red-snackbar', 'mt-5'],
+          duration: 2000,
+        });
       }
     );
   }
@@ -115,7 +138,6 @@ export class EmployeeComponent implements OnInit {
       }
     );
   }
-
 
   deleteEmp(nationalId: string): void {
     if (confirm('Are you sure you want to delete this employee?')) {
@@ -169,7 +191,7 @@ export class EmployeeComponent implements OnInit {
 
   getDepartmentName(departmentId: number): string {
     console.log('getDepartmentName() called with departmentId:', departmentId); // Add this logging statement
-    const department = this.departments.find(dep => dep.id === departmentId);
+    const department = this.departments.find((dep) => dep.id === departmentId);
     console.log(`Finding department for ID ${departmentId}:`, department); // Add this logging statement
     return department ? department.name : 'Unknown';
   }

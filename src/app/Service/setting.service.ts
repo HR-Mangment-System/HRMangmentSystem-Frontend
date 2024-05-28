@@ -6,7 +6,7 @@ import { Settings } from '../Models/settings';
   providedIn: 'root',
 })
 export class SettingService {
-  apiURL = 'http://localhost:44337/api/Settings/';
+  apiURL = 'https://localhost:44337/api/Settings/';
   constructor(private http: HttpClient) {}
   creatSet(set: Settings) {
     return this.http.post(this.apiURL + 'CreateSettings', set);

@@ -16,34 +16,31 @@
                 <div class="row py-4">
                   <div class="col-md-8 offset-md-2">
                     <input
-                    id="addGroupInput"
-                    type="text"
-                    class="form-control form-control-sm me-2"
-                    placeholder="Add New Group"
-                    aria-controls="datatable-buttons"
-                    formControlName="name"
-                  />
-                  <ng-container *ngIf="getName.dirty">
-                    <div
-                      *ngIf="getName.hasError('required')"
-                      id="emailHelp"
-                      class="form-text text-danger text-capitalize ps-1 lead"
-                    >
-                      Group Name is required.
-                    </div>
-  
-                    <div
-                      *ngIf="getName.hasError('minlength')"
-                      id="emailHelp"
-                      class="form-text text-danger text-capitalize ps-1 lead"
-                    >
-                      Group Name must be at least 3 characters.
-                    </div>
-  
-                  </ng-container>
-  
+                      id="addGroupInput"
+                      type="text"
+                      class="form-control form-control-sm me-2"
+                      placeholder="Add New Group"
+                      aria-controls="datatable-buttons"
+                      formControlName="name"
+                    />
+                    <ng-container *ngIf="getName.dirty">
+                      <div
+                        *ngIf="getName.hasError('required')"
+                        id="emailHelp"
+                        class="form-text text-danger text-capitalize ps-1 lead"
+                      >
+                        Group Name is required.
+                      </div>
+
+                      <div
+                        *ngIf="getName.hasError('minlength')"
+                        id="emailHelp"
+                        class="form-text text-danger text-capitalize ps-1 lead"
+                      >
+                        Group Name must be at least 3 characters.
+                      </div>
+                    </ng-container>
                   </div>
-  
                 </div>
                 <div class="row">
                   <div class="col-sm-12">
@@ -117,7 +114,10 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr class="odd" *ngFor="let page of pages; let i = index">
+                        <tr
+                          class="odd"
+                          *ngFor="let page of pages; let i = index"
+                        >
                           <td>
                             {{ i + 1 }}
                           </td>
