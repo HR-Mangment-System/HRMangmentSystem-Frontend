@@ -33,30 +33,4 @@ export class SettingComponent {
       }
     );
   }
-
-  updateSettings() {
-    this.settingService.updateSet(this.settings).subscribe(
-      (response) => {
-        console.log('Settings updated successfully:', response);
-        this.message = 'Settings Updated Successfully!';
-      },
-      (error) => {
-        console.error('Error updating settings:', error);
-        this.message = 'Error Updating Settings!';
-      }
-    );
-  }
-
-  deleteSettings(settingId: number) {
-    this.settingService.deleteSet(settingId).subscribe(
-      (response) => {
-        console.log('Settings deleted successfully:', response);
-        this.message = 'Settings Deleted Successfully!';
-      },
-      (error) => {
-        console.error('Error deleting settings:', error);
-        this.message = 'Error Deleting Settings!';
-      }
-    );
-  }
 }

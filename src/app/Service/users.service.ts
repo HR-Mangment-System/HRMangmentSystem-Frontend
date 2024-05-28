@@ -33,7 +33,6 @@ export class UsersService {
       this.loggedinUser.userFullName = userToken.userFullName;
       this.loggedinUser.UserRole = userToken.UserRole;
       this.loggedinUser.userName = userToken.userName;
-      console.log(this.loggedinUser);
     }
   }
 
@@ -41,7 +40,6 @@ export class UsersService {
     this.retreiveTokenData();
     return this.loggedinUser.userID === '' ? false : true;
   }
-  
 
   logoutUser() {
     localStorage.removeItem('UserToken');
@@ -52,10 +50,9 @@ export class UsersService {
       UserRole: [''],
       userName: '',
     };
-  }hasRole(roles: string[]): boolean {
-    this.retreiveTokenData();
-    return roles.some(role => this.loggedinUser.UserRole.includes(role));
   }
-  
-  
+  hasRole(roles: string[]): boolean {
+    this.retreiveTokenData();
+    return roles.some((role) => this.loggedinUser.UserRole.includes(role));
+  }
 }

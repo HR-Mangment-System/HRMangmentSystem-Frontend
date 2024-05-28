@@ -57,7 +57,7 @@ export class manageattendenceComponent implements OnInit {
       this.Flag = false;
       this.EmployeeService.getEmployees().subscribe({
         next: (data: any) => {
-          this.employees = data.data;
+          this.employees = data;
         },
       });
     }
@@ -92,6 +92,7 @@ export class manageattendenceComponent implements OnInit {
           this.router.navigate(['/attendance-departure']);
         },
         error: (error: any) => {
+          console.log(error);
           this._snackBar.open('No Content', 'X', {
             horizontalPosition: 'end',
             verticalPosition: 'top',

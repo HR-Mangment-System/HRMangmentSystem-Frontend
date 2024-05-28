@@ -1,12 +1,5 @@
-<div class="content-page">
+<div class="content-page mt-5">
   <div class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <h4 class="page-title">Employee Salary</h4>
-        </div>
-      </div>
-    </div>
     <div class="row">
       <div class="col-md-10 offset-md-1">
         <div class="card">
@@ -25,7 +18,7 @@
                 </button>
               </div>
               <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="content" #content>
                   <thead>
                     <tr>
                       <th>Employee Name</th>
@@ -54,14 +47,12 @@
                       <td>{{ employee.totalPenality | currency }}</td>
                       <td>{{ employee.totalSalary | currency }}</td>
                       <td>
-                        <div class="operation-icons d-flex align-items-center">
-                          <a href="#" class="btn btn-link operation-icon mr-3">
-                            <i class="text-dark ri-lg ri-file-ppt-fill"></i>
-                          </a>
-                          <a href="#" class="btn btn-link operation-icon">
-                            <i class="ri-printer-line ri-lg text-muted"></i>
-                          </a>
-                        </div>
+                        <a
+                          (click)="SavePDF()"
+                          class="btn btn-link operation-icon"
+                        >
+                          <i class="text-dark ri-lg ri-file-ppt-fill"></i>
+                        </a>
                       </td>
                     </tr>
                   </tbody>

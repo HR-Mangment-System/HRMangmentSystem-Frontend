@@ -44,7 +44,6 @@ export class AttendanceDepartureComponent implements OnInit {
       { validator: this.dateValidator }
     );
   }
-  // Rest of the component code...
 
   ngOnInit(): void {
     this.AttendanceService.getallAttendance().subscribe((data) => {
@@ -77,8 +76,6 @@ export class AttendanceDepartureComponent implements OnInit {
         });
         return formattedRow;
       });
-
-      console.log(formattedData);
     };
 
     reader.readAsArrayBuffer(file);
