@@ -37,7 +37,7 @@ export class SigninComponent {
           localStorage.setItem('UserToken', response.data);
           const decodedToken: userToken = jwtDecode(response.data);
           this.userService.loggedinUser = decodedToken;
-          this.router.navigate(['/users-groups']);
+          this.router.navigate(['/']);
           console.log(true);
         },
         error: (error) => {
