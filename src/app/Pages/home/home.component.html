@@ -12,7 +12,11 @@
       <div class="row">
         <div class="col-12">
           <div class="row">
+
             <div class="col-sm-4">
+
+            <div class="col-sm-3" *ngIf="UsersService.hasRole(['SuperAdmin'])">
+
               <a routerLink="/users-groups">
                 <div class="card widget-flat">
                   <div class="card-body">
@@ -33,7 +37,11 @@
               </a>
             </div>
 
+
             <div class="col-sm-4">
+
+            <div class="col-sm-3" *ngIf="UsersService.hasRole(['SuperAdmin'])">
+
               <a routerLink="/user-register">
                 <div class="card widget-flat">
                   <div class="card-body">
@@ -54,7 +62,11 @@
               </a>
             </div>
 
+
             <div class="col-sm-4">
+
+            <div class="col-sm-3" *ngIf="UsersService.hasRole(['SuperAdmin'])">
+
               <a routerLink="/department">
                 <div class="card widget-flat">
                   <div class="card-body">
@@ -80,7 +92,11 @@
       <div class="row">
         <div class="col-12">
           <div class="row">
+
             <div class="col-sm-4">
+
+            <div class="col-sm-3" *ngIf="UsersService.hasRole(['SuperAdmin','Settings.Read'])">
+
               <a routerLink="/annual-holidays">
                 <div class="card widget-flat">
                   <div class="card-body">
@@ -101,7 +117,11 @@
               </a>
             </div>
 
+
             <div class="col-sm-4">
+
+            <div class="col-sm-3 " *ngIf="UsersService.hasRole(['SuperAdmin','Settings.Read'])">
+
               <a routerLink="/general-settings">
                 <div class="card widget-flat">
                   <div class="card-body">
@@ -129,6 +149,9 @@
         <div class="col-12">
           <div class="row">
             <div class="col-sm-4">
+
+            <div class="col-sm-3" *ngIf="UsersService.hasRole(['SuperAdmin','Employees.Read'])">
+
               <a routerLink="/employee">
                 <div class="card widget-flat">
                   <div class="card-body">
@@ -148,7 +171,11 @@
                 </div>
               </a>
             </div>
+
             <div class="col-sm-4">
+
+            <div class="col-sm-3"*ngIf="UsersService.hasRole(['SuperAdmin','Attendance.Read'])" >
+
               <a routerLink="/attendance-departure">
                 <div class="card widget-flat">
                   <div class="card-body">
@@ -170,6 +197,10 @@
             </div>
             <div class="col-sm-4">
               <a routerLink="/employee-salary">
+
+            <div class="col-sm-3" *ngIf="UsersService.hasRole(['SuperAdmin','Employees.Salaries'])"> 
+              <a routerLink="/employee-salary" >
+
                 <div class="card widget-flat">
                   <div class="card-body">
                     <div class="float-end">
