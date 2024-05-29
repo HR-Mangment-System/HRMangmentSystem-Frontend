@@ -6,6 +6,7 @@ import { EmployeeDepartmentService } from './../../Service/employee-department.s
 import { AlertComponent } from 'src/app/Pop up/alert/alert.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UsersService } from 'src/app/Service/users.service';
 
 @Component({
   selector: 'app-departments',
@@ -25,7 +26,7 @@ export class DepartmentsComponent implements OnInit {
     private dialog: MatDialog,
     private modalService: NgbModal,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +34,7 @@ export class DepartmentsComponent implements OnInit {
     this.departmentForm = this.fb.group({
       name: ['', Validators.required],
     });
+
   }
 
   loadDepartments(): void {
