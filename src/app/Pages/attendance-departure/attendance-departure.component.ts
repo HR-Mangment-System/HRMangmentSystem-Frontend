@@ -18,6 +18,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { NgxPrintModule } from 'ngx-print';
+import { UsersService } from 'src/app/Service/users.service';
 @Component({
   selector: 'app-attendance-departure',
   templateUrl: './attendance-departure.component.html',
@@ -31,7 +32,8 @@ export class AttendanceDepartureComponent implements OnInit {
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
     public dialogRef: MatDialog,
-    public AttendanceService: AttendanceService
+    public AttendanceService: AttendanceService,
+    public usersService: UsersService
   ) {
     this.myForm = this.fb.group(
       {

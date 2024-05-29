@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { retry } from 'rxjs';
 import { HolidayService } from 'src/app/Service/annual-holidays.service';
+import { UsersService } from 'src/app/Service/users.service';
 import { Holiday } from 'src/app/interfaces/Holiday';
 
 @Component({
@@ -29,7 +30,8 @@ export class AnnualHolidaysComponent implements OnInit {
   constructor(
     private holidayService: HolidayService,
     public router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public usersService: UsersService
   ) {}
   formHoliday = new FormGroup({
     holidayName: new FormControl('', [

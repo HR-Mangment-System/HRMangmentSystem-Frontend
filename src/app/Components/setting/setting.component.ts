@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Settings } from 'src/app/Models/settings';
 import { SettingService } from 'src/app/Service/setting.service';
+import { UsersService } from 'src/app/Service/users.service';
 
 @Component({
   selector: 'app-setting',
@@ -22,7 +23,8 @@ export class SettingComponent {
   ];
   constructor(
     private settingService: SettingService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    public usersService: UsersService
   ) {}
   Change() {
     if (this.settings.bonusRate < 0) {

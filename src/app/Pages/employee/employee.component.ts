@@ -3,6 +3,7 @@ import { Employee } from './../../Models/employee';
 import { EmployeeService } from 'src/app/Service/employee.service';
 import { EmployeeDepartmentService } from 'src/app/Service/employee-department.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UsersService } from 'src/app/Service/users.service';
 
 @Component({
   selector: 'app-employee',
@@ -21,7 +22,8 @@ export class EmployeeComponent implements OnInit {
   constructor(
     private empSer: EmployeeService,
     private empDepSer: EmployeeDepartmentService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public usersService: UsersService
   ) {}
 
   ngOnInit(): void {

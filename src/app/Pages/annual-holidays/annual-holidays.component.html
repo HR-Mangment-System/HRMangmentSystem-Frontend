@@ -2,7 +2,7 @@
   <div class="card">
     <h2 class="card-header text-center py-3">Annual Holidays</h2>
     <div class="card-body">
-      <form [formGroup]="formHoliday">
+      <form [formGroup]="formHoliday" *ngIf="usersService.hasRole(['SuperAdmin','Settings.Create','Settings.Update'])">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
@@ -65,13 +65,13 @@
           </button>
         </div>
       </form>
-      <div class="table-container" style="max-height: 200px; overflow-y: auto">
+      <div class="table-container" style="max-height: 200px; overflow-y: auto" *ngIf="usersService.hasRole(['SuperAdmin','Settings.Read'])">
         <table class="table">
           <thead>
             <tr>
               <th>Name</th>
               <th>Date</th>
-              <th>Actions</th>
+              <th *ngIf="usersService.hasRole(['SuperAdmin','Settings.Delete','Settings.Update'])">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -79,10 +79,11 @@
               <td>{{ h.holidayName }}</td>
               <td>{{ h.holidayDate }}</td>
               <td>
-                <button class="btn btn-sm btn-outline-primary mx-1">
+                <button class="btn btn-sm btn-outline-primary mx-1" *ngIf="usersService.hasRole(['SuperAdmin','Settings.Update'])" >
                   <span class="bi bi-pencil" (click)="setUpdate(h)"></span>
                 </button>
                 <button
+                  *ngIf="usersService.hasRole(['SuperAdmin','Settings.Delete'])"
                   class="btn btn-sm btn-outline-danger mx-1"
                   (click)="deleteHoliday(h.id)"
                 >
