@@ -129,8 +129,7 @@ export class EmployeeComponent implements OnInit {
             panelClass: ['green-snackbar', 'mt-5'],
             duration: 2000,
           });
-          this.loadInitialData();
-          this.resetForm();
+          this.ngOnInit();
           this.isEditMode = false;
           setTimeout(() => {
             this.message = ''; // Clear message after 3 seconds
