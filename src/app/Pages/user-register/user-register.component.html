@@ -1,6 +1,6 @@
 <!-- Begin page -->
 
-<div class="content-page">
+<div class="content-page my-5">
   <div class="content">
     <!-- Start Content-->
     <div class="container-fluid">
@@ -34,7 +34,7 @@
                         Full Name is required
                       </div>
                     </div>
-  
+
                     <div class="mb-3">
                       <label for="userName" class="form-label">User Name</label>
                       <input
@@ -68,7 +68,7 @@
                         User Name must be at least 4 characters
                       </div>
                     </div>
-  
+
                     <div class="mb-3">
                       <label for="email" class="form-label">Email</label>
                       <input
@@ -89,7 +89,7 @@
                         Email is required
                       </div>
                     </div>
-  
+
                     <div class="mb-3">
                       <label for="password" class="form-label">Password:</label>
                       <input
@@ -156,7 +156,7 @@
                         Passwords do not match
                       </div>
                     </div>
-  
+
                     <div class="mb-3">
                       <label for="groupId" class="form-label">Group</label>
                       <select
@@ -169,7 +169,7 @@
                           {{ group.name }}
                         </option>
                       </select>
-  
+
                       <div
                         *ngIf="
                           registrationForm.get('groupId')?.invalid &&
@@ -180,8 +180,10 @@
                         Group selection is required
                       </div>
                     </div>
-  
-                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                    <button type="submit" class="btn btn-primary">
+                      Submit
+                    </button>
                   </div>
                   <!-- end col-->
                 </div>
@@ -195,6 +197,6 @@
     </div>
   </div>
   <!-- end page title -->
-    
+
   <!-- end card-body -->
 </div>

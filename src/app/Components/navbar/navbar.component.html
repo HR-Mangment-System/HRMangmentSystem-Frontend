@@ -76,6 +76,22 @@
           >
             <a
               class="nav-link"
+              routerLink="/"
+              id="topnav-dashboards"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i class="ri-home-5-fill"></i>Home
+            </a>
+          </li>
+          <li
+            class="nav-item dropdown"
+            *ngIf="usersService.hasRole(['SuperAdmin'])"
+          >
+            <a
+              class="nav-link"
               routerLink="/users-groups"
               id="topnav-dashboards"
               role="button"
@@ -88,18 +104,18 @@
           </li>
           <li
             class="nav-item dropdown"
-            *ngIf="usersService.hasRole(['Employees.Read', 'SuperAdmin'])"
+            *ngIf="usersService.hasRole(['SuperAdmin'])"
           >
             <a
               class="nav-link"
-              routerLink="/employee"
+              routerLink="user-register"
               id="topnav-dashboards"
               role="button"
               data-bs-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <i class="ri-user-add-fill"></i>Employees
+              <i class="uil-user"></i>Add Users
             </a>
           </li>
           <li
@@ -118,22 +134,7 @@
               <i class="uil-subject"></i>Departments
             </a>
           </li>
-          <li
-            class="nav-item dropdown"
-            *ngIf="usersService.hasRole(['SuperAdmin'])"
-          >
-            <a
-              class="nav-link"
-              routerLink="user-register"
-              id="topnav-dashboards"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <i class="uil-user"></i>Add User
-            </a>
-          </li>
+
           <li
             class="nav-item dropdown"
             *ngIf="usersService.hasRole(['SuperAdmin', 'Settings.Read'])"
@@ -163,7 +164,24 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <i class="uil-edit"></i>Settings
+              <i class="uil-edit"></i>Setting
+            </a>
+          </li>
+
+          <li
+            class="nav-item dropdown"
+            *ngIf="usersService.hasRole(['Employees.Read', 'SuperAdmin'])"
+          >
+            <a
+              class="nav-link"
+              routerLink="/employee"
+              id="topnav-dashboards"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i class="ri-user-add-fill"></i>Employees
             </a>
           </li>
           <li
@@ -195,7 +213,7 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <i class="uil-dollar-alt"></i>Salary Report
+              <i class="uil-dollar-alt"></i>Salaries
             </a>
           </li>
         </ul>

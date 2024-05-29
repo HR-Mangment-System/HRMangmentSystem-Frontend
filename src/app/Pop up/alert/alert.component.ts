@@ -4,6 +4,7 @@ import { EmployeeDepartmentService } from './../../Service/employee-department.s
 import { AttendanceService } from 'src/app/Service/attendance.service'; // Import your employee service
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { EmployeeService } from 'src/app/Service/employee.service';
 
 @Component({
   selector: 'app-alert',
@@ -17,8 +18,15 @@ export class AlertComponent {
     private router: Router,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
+    private empSer: EmployeeService,
+
     @Inject(MAT_DIALOG_DATA)
-    public data: { id: 0; alerttype: string; entityType: string }
+    public data: {
+      id: 0;
+      alerttype: string;
+      entityType: string;
+      employeeId: string;
+    }
   ) {}
 
   confirm() {
@@ -47,10 +55,49 @@ export class AlertComponent {
         case 'attendance':
           this.attendanceService.deleteAttendance(this.data.id).subscribe(
             () => {
-              this.navigateBack();
+              this.snackBar.open('Deleted Successfully', 'X', {
+                horizontalPosition: 'end',
+                verticalPosition: 'top',
+                panelClass: ['green-snackbar', 'mt-5'],
+                duration: 2000,
+              });
             },
             (error) => {
-              console.error('Error deleting attendance:', error);
+              this.snackBar.open('Error Deleting Department ', 'X', {
+                horizontalPosition: 'end',
+                verticalPosition: 'top',
+                panelClass: ['red-snackbar', 'mt-5'],
+                duration: 2000,
+              });
+            }
+          );
+          break;
+        case 'employee':
+          this.empSer.deleteEmp(this.data.employeeId).subscribe(
+            (response: any) => {
+              if (response.succeeded) {
+                this.snackBar.open('Deleted Successfully', 'X', {
+                  horizontalPosition: 'end',
+                  verticalPosition: 'top',
+                  panelClass: ['green-snackbar', 'mt-5'],
+                  duration: 2000,
+                });
+              } else {
+                this.snackBar.open('Error Deleting Department ', 'X', {
+                  horizontalPosition: 'end',
+                  verticalPosition: 'top',
+                  panelClass: ['red-snackbar', 'mt-5'],
+                  duration: 2000,
+                });
+              }
+            },
+            (error) => {
+              this.snackBar.open('Error Deleting Department ', 'X', {
+                horizontalPosition: 'end',
+                verticalPosition: 'top',
+                panelClass: ['red-snackbar', 'mt-5'],
+                duration: 2000,
+              });
             }
           );
           break;

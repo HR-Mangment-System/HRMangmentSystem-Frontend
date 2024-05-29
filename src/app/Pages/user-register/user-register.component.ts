@@ -65,6 +65,8 @@ export class UserRegisterComponent implements OnInit {
             panelClass: ['green-snackbar', 'mt-5'],
             duration: 2000,
           });
+
+          this.registrationForm.reset();
         },
         error: (error: any) => {
           this.snackBar.open('Error Registering User', 'X', {

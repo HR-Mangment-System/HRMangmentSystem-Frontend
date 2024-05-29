@@ -4,6 +4,8 @@ import { EmployeeService } from 'src/app/Service/employee.service';
 import { EmployeeDepartmentService } from 'src/app/Service/employee-department.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsersService } from 'src/app/Service/users.service';
+import { AlertComponent } from 'src/app/Pop up/alert/alert.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-employee',
@@ -23,7 +25,8 @@ export class EmployeeComponent implements OnInit {
     private empSer: EmployeeService,
     private empDepSer: EmployeeDepartmentService,
     private snackBar: MatSnackBar,
-    public usersService: UsersService
+    public usersService: UsersService,
+    public dialogRef: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -117,13 +120,15 @@ export class EmployeeComponent implements OnInit {
   updateEmp(): void {
     const updatedEmployee: Employee = { ...this.employee };
 
-    console.log('Updated Employee before sending:', updatedEmployee);
-
     this.empSer.updateEmp(updatedEmployee).subscribe(
       (response: any) => {
         if (response.succeeded) {
-          console.log('Employee edited successfully:', response);
-          this.message = 'Updated successfully';
+          this.snackBar.open('Edited Successfully', 'X', {
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: ['green-snackbar', 'mt-5'],
+            duration: 2000,
+          });
           this.loadInitialData();
           this.resetForm();
           this.isEditMode = false;
@@ -131,34 +136,37 @@ export class EmployeeComponent implements OnInit {
             this.message = ''; // Clear message after 3 seconds
           }, 3000);
         } else {
-          this.errMes = response.message || 'Employee Edition Failed!';
+          this.snackBar.open('Error Editing Employee', 'X', {
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: ['red-snackbar', 'mt-5'],
+            duration: 2000,
+          });
         }
       },
       (error) => {
-        console.error('Error editing employee:', error);
-        this.errMes = 'Employee Edition Failed!';
+        this.snackBar.open('Error Editing Employee', 'X', {
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: ['red-snackbar', 'mt-5'],
+          duration: 2000,
+        });
       }
     );
   }
 
   deleteEmp(nationalId: string): void {
-    if (confirm('Are you sure you want to delete this employee?')) {
-      this.empSer.deleteEmp(nationalId).subscribe(
-        (response: any) => {
-          if (response.succeeded) {
-            console.log('Employee deleted successfully:', response);
-            this.message = response.message;
-            this.loadInitialData();
-          } else {
-            this.errMes = response.message || 'Employee Deletion Failed!';
-          }
-        },
-        (error) => {
-          console.error('Error deleting employee:', error);
-          this.errMes = 'Employee Deletion Failed!';
-        }
-      );
-    }
+    const dialogRef = this.dialogRef.open(AlertComponent, {
+      data: {
+        employeeId: nationalId,
+        alerttype: 'delete',
+        entityType: 'employee',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.loadInitialData();
+    });
   }
 
   editEmp(emp: Employee): void {
