@@ -4,7 +4,7 @@
       <!-- Topbar Brand Logo -->
       <div class="logo-topbar">
         <!-- Logo Dark -->
-        <a class="logo-dark">
+        <a class="logo-dark" routerLink="/">
           <span class="logo-lg">
             <img src="../../../assets/images/logo.png" alt="dark logo" />
           </span>
@@ -31,33 +31,27 @@
           <span></span>
         </div>
       </button>
-
-      
-   
     </div>
 
-    <ul class="topbar-menu d-flex align-items-center gap-3">
-   
-
+    <ul class="topbar-menu border-0">
       <li class="dropdown">
         <a
-          class="nav-link dropdown-toggle arrow-none nav-user px-2 "
+          class="nav-link dropdown-toggle nav-user px-2 border-0"
           data-bs-toggle="dropdown"
           href="#"
           role="button"
           aria-haspopup="false"
           aria-expanded="false"
         >
-          <span class="d-lg-flex flex-column gap-1 d-none d-flex justify-content-center align-items-center">
-            <i class="ri-user-2-fill ri-2x mt-3"></i>
-            <h5 class="my-0">{{ username }}</h5>
-            
+          <span class="d-lg-flex flex-column d-none">
+            <h3 class="my-0">
+              {{ username }}
+            </h3>
           </span>
         </a>
         <div
           class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown"
         >
-
           <!-- item-->
           <a (click)="logout()" class="dropdown-item">
             <i class="mdi mdi-logout me-1"></i>
@@ -71,12 +65,15 @@
 <!-- ========== Topbar End ========== -->
 
 <!-- ========== Horizontal Menu Start ========== -->
-<div class="topnav ">
-  <div class="container-fluid   ">
-    <nav class="navbar navbar-expand-lg ">
-      <div class="collapse navbar-collapse " id="topnav-menu-content">
-        <ul class="navbar-nav ">
-          <li class="nav-item dropdown" *ngIf="usersService.hasRole(['SuperAdmin'])">
+<div class="topnav">
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg">
+      <div class="collapse navbar-collapse" id="topnav-menu-content">
+        <ul class="navbar-nav">
+          <li
+            class="nav-item dropdown"
+            *ngIf="usersService.hasRole(['SuperAdmin'])"
+          >
             <a
               class="nav-link"
               routerLink="/users-groups"
@@ -89,7 +86,10 @@
               <i class="ri-folder-user-fill"></i>Users Groups
             </a>
           </li>
-          <li class="nav-item dropdown" *ngIf="usersService.hasRole(['Employees.Read','SuperAdmin'])">
+          <li
+            class="nav-item dropdown"
+            *ngIf="usersService.hasRole(['Employees.Read', 'SuperAdmin'])"
+          >
             <a
               class="nav-link"
               routerLink="/employee"
@@ -102,7 +102,10 @@
               <i class="ri-user-add-fill"></i>Employees
             </a>
           </li>
-          <li class="nav-item dropdown" *ngIf="usersService.hasRole(['SuperAdmin'])">
+          <li
+            class="nav-item dropdown"
+            *ngIf="usersService.hasRole(['SuperAdmin'])"
+          >
             <a
               class="nav-link"
               routerLink="department"
@@ -115,7 +118,10 @@
               <i class="uil-subject"></i>Departments
             </a>
           </li>
-          <li class="nav-item dropdown" *ngIf="usersService.hasRole(['SuperAdmin'])">
+          <li
+            class="nav-item dropdown"
+            *ngIf="usersService.hasRole(['SuperAdmin'])"
+          >
             <a
               class="nav-link"
               routerLink="user-register"
@@ -128,7 +134,10 @@
               <i class="uil-user"></i>Add User
             </a>
           </li>
-          <li class="nav-item dropdown" *ngIf="usersService.hasRole(['SuperAdmin','Settings.Read'])">
+          <li
+            class="nav-item dropdown"
+            *ngIf="usersService.hasRole(['SuperAdmin', 'Settings.Read'])"
+          >
             <a
               class="nav-link"
               routerLink="annual-holidays"
@@ -141,7 +150,10 @@
               <i class="uil-coffee"></i>annual holidays
             </a>
           </li>
-          <li class="nav-item dropdown" *ngIf="usersService.hasRole(['SuperAdmin','Settings.Read'])">
+          <li
+            class="nav-item dropdown"
+            *ngIf="usersService.hasRole(['SuperAdmin', 'Settings.Read'])"
+          >
             <a
               class="nav-link"
               routerLink="general-settings"
@@ -154,7 +166,10 @@
               <i class="uil-edit"></i>Settings
             </a>
           </li>
-          <li class="nav-item dropdown" *ngIf="usersService.hasRole(['SuperAdmin','Attendance.Read'])">
+          <li
+            class="nav-item dropdown"
+            *ngIf="usersService.hasRole(['SuperAdmin', 'Attendance.Read'])"
+          >
             <a
               class="nav-link"
               routerLink="attendance-departure"
@@ -164,10 +179,13 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <i class="uil-ticket"></i>Attendance 
+              <i class="uil-ticket"></i>Attendance
             </a>
           </li>
-          <li class="nav-item dropdown"*ngIf="usersService.hasRole(['SuperAdmin','Salaries.Read'])">
+          <li
+            class="nav-item dropdown"
+            *ngIf="usersService.hasRole(['SuperAdmin', 'Salaries.Read'])"
+          >
             <a
               class="nav-link"
               routerLink="employee-salary"
