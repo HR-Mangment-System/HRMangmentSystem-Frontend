@@ -94,9 +94,9 @@ export class EmployeeComponent implements OnInit {
             panelClass: ['green-snackbar', 'mt-5'],
             duration: 2000,
           });
+
           this.message = response.message;
-          this.loadInitialData();
-          this.resetForm();
+          this.ngOnInit();
         } else {
           this.snackBar.open('Error Adding Employee', 'X', {
             horizontalPosition: 'end',

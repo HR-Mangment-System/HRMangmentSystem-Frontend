@@ -12,7 +12,7 @@ export class UsersGroupsComponent {
   constructor(
     private groupService: UsersGroupsService,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   pages: Page[] = [
     {
@@ -109,6 +109,7 @@ export class UsersGroupsComponent {
       }
     }
 
+
     if (this.form.controls['name'].valid && this.ischanged) {
       this.groupService.createGroup(this.form.value).subscribe({
         next: (data) => {
@@ -120,6 +121,10 @@ export class UsersGroupsComponent {
           });
           this.form.reset();
           this.resetForm();
+          let allChecks: any = Array.from(document.getElementsByClassName('form-check-input'));
+          allChecks.forEach((check: any) => {
+            check.checked = false;
+          })
         },
         error: (error) => {
           this.snackBar.open('Added Successfully', 'X', {

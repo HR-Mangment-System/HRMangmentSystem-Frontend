@@ -20,14 +20,12 @@
         >
           <thead>
             <tr>
-              <th>Department ID</th>
               <th>Department Name</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let dept of employeeDepts">
-              <td class="table-user">{{ dept?.id }}</td>
               <td>{{ dept?.name }}</td>
               <td class="table-action">
                 <button

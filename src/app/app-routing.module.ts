@@ -16,17 +16,16 @@ import { PreventLoginService } from './Service/prevent-login.service';
 import { HomeComponent } from './Pages/home/home.component';
 
 const routes: Routes = [
-  {path:'', component: HomeComponent,canActivate: [AuthGaurdService]},
-  { path: 'employee', component: EmployeeComponent, canActivate: [AuthGaurdService,RoleGuardService],data: { expectedRole: ['SuperAdmin','Employees.Read']} },
-  { path: 'signin', component: SigninComponent ,canActivate:[PreventLoginService]},
-  { path: 'users-groups', component: UsersGroupsComponent, canActivate: [AuthGaurdService, RoleGuardService], data: { expectedRole: ['SuperAdmin']} },
+  { path: '', component: HomeComponent, canActivate: [AuthGaurdService] },
+  { path: 'employee', component: EmployeeComponent, canActivate: [AuthGaurdService, RoleGuardService], data: { expectedRole: ['SuperAdmin', 'Employees.Read'] } },
+  { path: 'signin', component: SigninComponent, canActivate: [PreventLoginService] },
+  { path: 'users-groups', component: UsersGroupsComponent, canActivate: [AuthGaurdService, RoleGuardService], data: { expectedRole: ['SuperAdmin'] } },
   { path: 'user-register', component: UserRegisterComponent, canActivate: [AuthGaurdService, RoleGuardService], data: { expectedRole: ['SuperAdmin'] } },
-  
-  { path: 'attendance-departure', component: AttendanceDepartureComponent, canActivate: [AuthGaurdService,RoleGuardService], data: { expectedRole: ['SuperAdmin','Attendance.Read'] } },
-  { path: 'employee-salary', component: EmployeeSalaryComponent, canActivate: [AuthGaurdService,RoleGuardService] ,data: { expectedRole: ['SuperAdmin','Salaries.Read']} },
-  { path: 'annual-holidays', component: AnnualHolidaysComponent, canActivate: [AuthGaurdService,RoleGuardService],data: { expectedRole: ['SuperAdmin','Settings.Read']} },
-  { path: 'department', component: DepartmentsComponent, canActivate: [AuthGaurdService,RoleGuardService],data: { expectedRole: ['SuperAdmin']} },
-  { path: 'general-settings', component: SettingComponent, canActivate: [AuthGaurdService,RoleGuardService],data: { expectedRole: ['SuperAdmin','Settings.Read']} },
+  { path: 'attendance-departure', component: AttendanceDepartureComponent, canActivate: [AuthGaurdService, RoleGuardService], data: { expectedRole: ['SuperAdmin', 'Attendance.Read'] } },
+  { path: 'employee-salary', component: EmployeeSalaryComponent, canActivate: [AuthGaurdService, RoleGuardService], data: { expectedRole: ['SuperAdmin', 'Salaries.Read'] } },
+  { path: 'annual-holidays', component: AnnualHolidaysComponent, canActivate: [AuthGaurdService, RoleGuardService], data: { expectedRole: ['SuperAdmin', 'Settings.Read'] } },
+  { path: 'department', component: DepartmentsComponent, canActivate: [AuthGaurdService, RoleGuardService], data: { expectedRole: ['SuperAdmin'] } },
+  { path: 'general-settings', component: SettingComponent, canActivate: [AuthGaurdService, RoleGuardService], data: { expectedRole: ['SuperAdmin', 'Settings.Read'] } },
   { path: '**', component: NotFoundComponent }
 ];
 
@@ -34,4 +33,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

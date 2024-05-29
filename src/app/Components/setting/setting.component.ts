@@ -43,6 +43,7 @@ export class SettingComponent {
           panelClass: ['green-snackbar', 'mt-5'],
           duration: 2000,
         });
+        this.settings = {} as Settings;
       },
       (error) => {
         this._snackBar.open('Error Setting settings', 'X', {
