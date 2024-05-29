@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit{
 
   userData: any;
-  constructor(private UsersService: UsersService) {
+  constructor(public UsersService: UsersService ) {
     
   }
   ngOnInit(): void {

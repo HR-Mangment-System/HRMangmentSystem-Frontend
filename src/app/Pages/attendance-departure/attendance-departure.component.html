@@ -3,7 +3,7 @@
     <div class="card-body">
       <div class="row">
         <div class="col-sm-12 col-md-6">
-          <div class="dt-buttons btn-group flex-wrap">
+          <div class="dt-buttons btn-group flex-wrap"  *ngIf="usersService.hasRole(['SuperAdmin','Attendance.Create'])">
             <label
               class="btn btn-soft-dark buttons-copy buttons-html5"
               tabindex="0"
@@ -122,7 +122,7 @@
               <th>Attendance</th>
               <th>Departure</th>
               <th>Date</th>
-              <th>Actions</th>
+              <th  *ngIf="usersService.hasRole(['SuperAdmin','Attendance.Delete','Attendance.Update'])">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -132,14 +132,14 @@
               <td>{{ data.arrivalTime }}</td>
               <td>{{ data.departureTime }}</td>
               <td>{{ data.attendanceDate }}</td>
-              <td class="table-action">
-                <a
+              <td class="table-action" *ngIf="usersService.hasRole(['SuperAdmin','Attendance.Delete','Attendance.Update'])">
+                <a *ngIf="usersService.hasRole(['SuperAdmin','Attendance.Update'])"
                   (click)="edit(data)"
                   class="btn btn-sm btn-outline-primary mx-1"
                 >
                   <i class="bi bi-pencil"></i
                 ></a>
-                <a
+                <a *ngIf="usersService.hasRole(['SuperAdmin','Attendance.Delete'])"
                   (click)="delete(data.id)"
                   class="btn btn-sm btn-outline-danger mx-1"
                   data-bs-toggle="modal"

@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { EmployeeSalaryService } from '../Service/employee-salary.service';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import { UsersService } from '../Service/users.service';
 
 @Component({
   selector: 'app-employee-salary',
@@ -14,7 +15,7 @@ export class EmployeeSalaryComponent implements OnInit {
   employeeNameInput!: ElementRef<HTMLInputElement>;
   employeeSalaries: any[] = [];
   @ViewChild('content', { static: false }) content!: ElementRef;
-  constructor(private employeeSalaryService: EmployeeSalaryService) {}
+  constructor(private employeeSalaryService: EmployeeSalaryService, public usersService: UsersService ) {}
 
   ngOnInit() {
     // Optionally, fetch data for the current month on initialization
@@ -24,6 +25,7 @@ export class EmployeeSalaryComponent implements OnInit {
       (currentDate.getMonth() + 1)
     ).slice(-2)}`;
     this.fetchEmployeeSalaries('', currentMonth);
+   
   }
 
   showFormattedDate() {
